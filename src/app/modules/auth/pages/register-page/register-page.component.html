@@ -1,0 +1,38 @@
+<mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-tile>
+    <div class="container">
+      <h2>Register</h2>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="user.username" matInput placeholder="Username" type="text" required/>
+        <button (click)="user.username=undefined" *ngIf="user.username" aria-label="Clear" cdkFocusInitial mat-button
+                mat-icon-button
+                matSuffix>
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="user.email" matInput placeholder="Email" type="email" required/>
+        <button (click)="user.email=undefined" *ngIf="user.email" aria-label="Clear" cdkFocusInitial mat-button
+                mat-icon-button
+                matSuffix>
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="user.password" matInput [type]="hide ? 'password' : 'text'" placeholder="Password"
+               type="password" required/>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <button (click)="register()" mat-button>Register</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
