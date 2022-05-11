@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   NAME: name,
   VERSION: version,
-  REST_CORE: 'http://localhost:8082'
+  REST_FSA: 'http://localhost:8081'
 };
 
 /*
