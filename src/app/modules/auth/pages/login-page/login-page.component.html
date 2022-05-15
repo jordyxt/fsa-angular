@@ -1,0 +1,23 @@
+<mat-grid-list cols="1" rowHeight="500px">
+  <mat-grid-tile>
+    <div class="container">
+      <h2>Login</h2>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="username" matInput placeholder="Username" type="text"/>
+        <button (click)="username=undefined" *ngIf="username" aria-label="Clear" cdkFocusInitial mat-button
+                mat-icon-button
+                matSuffix>
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill" class="width-100">
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="password" matInput placeholder="Password" type="password"/>
+      </mat-form-field>
+      <br>
+      <button (click)="login()" mat-button>Login</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

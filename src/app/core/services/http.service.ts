@@ -98,8 +98,8 @@ export class HttpService {
         catchError(error => this.handleError(error)));
   }
 
-  authBasic(mobile: number, password: string): HttpService {
-    return this.header('Authorization', 'Basic ' + btoa(mobile + ':' + password));
+  authBasic(username: string, password: string): HttpService {
+    return this.header('Authorization', 'Basic ' + btoa(username + ':' + password));
   }
 
   header(key: string, value: string): HttpService {
