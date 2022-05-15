@@ -6,10 +6,12 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import {FormsModule } from '@angular/forms';
 import { MaterialModule } from '@shared/material.module';
 import {HttpService} from '@core/services/http.service';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
-    RegisterPageComponent
+    RegisterPageComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,
