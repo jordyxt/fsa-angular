@@ -16,7 +16,9 @@ export class LoginPageComponent {
   login(): void {
     this.auth.login(this.username, this.password).subscribe(
       () => {
-        this.router.navigate(['/', 'home']).then();
+        if (this.auth.isBasic() || this.auth.isAdmin()) {
+          this.router.navigate(['']).then();
+        }
       }
     );
   }
