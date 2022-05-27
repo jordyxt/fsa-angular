@@ -4,6 +4,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
 
 import {MaterialModule} from '@shared/material.module';
+import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.component';
+import {UppercaseWords} from '@shared/pipes/UppercaseWordsPipe';
+import {CrudComponent} from '@shared/components/crud.component';
 
 
 @NgModule({
@@ -16,6 +19,9 @@ import {MaterialModule} from '@shared/material.module';
     ReactiveFormsModule
   ],
   declarations: [
+    ReadDetailDialogComponent,
+    UppercaseWords,
+    CrudComponent
   ],
   providers: [],
   exports: [
@@ -24,9 +30,14 @@ import {MaterialModule} from '@shared/material.module';
     FlexModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    ReadDetailDialogComponent,
+    UppercaseWords,
+    CrudComponent
   ],
-  entryComponents: []
+  entryComponents: [
+    ReadDetailDialogComponent
+  ]
 })
 export class SharedModule {
 }
