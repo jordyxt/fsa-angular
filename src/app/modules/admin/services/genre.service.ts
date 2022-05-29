@@ -36,4 +36,9 @@ export class GenreService {
       .paramsFrom(tagSearch)
       .get(EndPoints.GENRES + GenreService.SEARCH);
   }
+  delete(name: string): Observable<Genre> {
+    return this.httpService
+      .successful()
+      .delete(EndPoints.GENRES + '/' + name);
+  }
 }
