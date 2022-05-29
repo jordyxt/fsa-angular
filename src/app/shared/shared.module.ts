@@ -8,6 +8,8 @@ import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.comp
 import {UppercaseWords} from '@shared/pipes/UppercaseWordsPipe';
 import {CrudComponent} from '@shared/components/crud.component';
 import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
+import {MenuComponent} from '@shared/components/menu.component';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -17,13 +19,15 @@ import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.compon
     MaterialModule,
     FlexLayoutModule,
     FlexModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations: [
     ReadDetailDialogComponent,
     UppercaseWords,
     CrudComponent,
-    CancelYesDialogComponent
+    CancelYesDialogComponent,
+    MenuComponent
   ],
   providers: [],
   exports: [
@@ -36,7 +40,8 @@ import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.compon
     ReadDetailDialogComponent,
     UppercaseWords,
     CrudComponent,
-    CancelYesDialogComponent
+    CancelYesDialogComponent,
+    MenuComponent
   ],
   entryComponents: [
     ReadDetailDialogComponent,

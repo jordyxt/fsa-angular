@@ -7,6 +7,7 @@ import {FormsModule } from '@angular/forms';
 import { MaterialModule } from '@shared/material.module';
 import {HttpService} from '@core/services/http.service';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     CommonModule,
     AuthRoutingModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [HttpService]
 })
