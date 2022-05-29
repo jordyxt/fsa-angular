@@ -7,6 +7,7 @@ import {map} from 'rxjs/operators';
 import {GenreDialogComponent} from '../../dialogs/genre-dialog/genre-dialog.component';
 import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.component';
 import {Genre} from '../../models/genre.model';
+import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
 
 @Component({
   selector: 'app-genre-page',
@@ -33,6 +34,7 @@ export class GenrePageComponent {
   }
   resetSearch(): void {
     this.genreSearch = {};
+    this.search();
   }
 
   create(): void {
@@ -43,7 +45,7 @@ export class GenrePageComponent {
 
   update(genre: Genre): void {
     this.genreService.read(genre.name)
-      .subscribe(fullTag => this.dialog.open(GenreDialogComponent, {data: fullTag}).afterClosed().subscribe(() =>
+      .subscribe(fullGenre => this.dialog.open(GenreDialogComponent, {data: fullGenre}).afterClosed().subscribe(() =>
         this.search()
       ));
   }
@@ -51,9 +53,21 @@ export class GenrePageComponent {
   read(genre: Genre): void {
     this.dialog.open(ReadDetailDialogComponent, {
       data: {
-        title: 'Tag Details',
+        title: 'Genre Details',
         object: of(genre)
       }
     });
+  }
+
+  delete(genre: Genre): void {
+    this.dialog.open(CancelYesDialogComponent).afterClosed().subscribe(
+      result => {
+        if (result) {
+          this.genreService.delete(genre.name).subscribe(
+            () => this.search()
+          );
+        }
+      }
+    );
   }
 }

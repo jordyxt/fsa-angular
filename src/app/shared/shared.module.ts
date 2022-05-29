@@ -7,6 +7,7 @@ import {MaterialModule} from '@shared/material.module';
 import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.component';
 import {UppercaseWords} from '@shared/pipes/UppercaseWordsPipe';
 import {CrudComponent} from '@shared/components/crud.component';
+import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {CrudComponent} from '@shared/components/crud.component';
   declarations: [
     ReadDetailDialogComponent,
     UppercaseWords,
-    CrudComponent
+    CrudComponent,
+    CancelYesDialogComponent
   ],
   providers: [],
   exports: [
@@ -33,10 +35,12 @@ import {CrudComponent} from '@shared/components/crud.component';
     MaterialModule,
     ReadDetailDialogComponent,
     UppercaseWords,
-    CrudComponent
+    CrudComponent,
+    CancelYesDialogComponent
   ],
   entryComponents: [
-    ReadDetailDialogComponent
+    ReadDetailDialogComponent,
+    CancelYesDialogComponent
   ]
 })
 export class SharedModule {
