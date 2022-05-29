@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/home">
+    <img alt="fsa" src="favicon.ico"/>
+    <span> FSA</span>
+  </button>
+  <div>
+    <button [matMenuTriggerFor]="userManagement" mat-button><mat-icon>person_outline</mat-icon></button>
+    <mat-menu #userManagement="matMenu">
+      <button mat-menu-item routerLink="/auth/login" *ngIf="!isAuthenticated()">
+        <mat-icon>person_outline</mat-icon>
+        <span>Login</span></button>
+      <button mat-menu-item routerLink="/auth/register" *ngIf="!isAuthenticated()">
+        <mat-icon>person_add_alt_1</mat-icon>
+        <span>Register</span></button>
+      <button mat-menu-item (click)="logout()" *ngIf="isAuthenticated()">
+        <span>{{username}}</span>
+        <mat-icon>person_outline</mat-icon>
+        <span>Logout</span></button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
