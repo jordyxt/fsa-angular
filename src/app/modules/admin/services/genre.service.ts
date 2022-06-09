@@ -31,9 +31,9 @@ export class GenreService {
       .put(EndPoints.GENRES + '/' + oldName, genre);
   }
 
-  search(tagSearch: GenreSearch): Observable<Genre[]> {
+  search(genreSearch: GenreSearch): Observable<Genre[]> {
     return this.httpService
-      .paramsFrom(tagSearch)
+      .paramsFrom(genreSearch)
       .get(EndPoints.GENRES + GenreService.SEARCH);
   }
   delete(name: string): Observable<Genre> {

@@ -10,6 +10,7 @@ import {CrudComponent} from '@shared/components/crud.component';
 import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
 import {MenuComponent} from '@shared/components/menu.component';
 import {RouterModule} from '@angular/router';
+import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {RouterModule} from '@angular/router';
     UppercaseWords,
     CrudComponent,
     CancelYesDialogComponent,
-    MenuComponent
+    MenuComponent,
+    GenreFilterComponent
   ],
   providers: [],
   exports: [
@@ -41,7 +43,8 @@ import {RouterModule} from '@angular/router';
     UppercaseWords,
     CrudComponent,
     CancelYesDialogComponent,
-    MenuComponent
+    MenuComponent,
+    GenreFilterComponent
   ],
   entryComponents: [
     ReadDetailDialogComponent,
