@@ -1,6 +1,9 @@
+import {Genre} from '../../admin/models/genre.model';
+
 export interface Film {
+  id: number;
   title: string;
   description: string;
-  release_date: Date;
+  date: string;
   genreList: string[];
 }

@@ -14,26 +14,40 @@ export class FilmSearchPageComponent  implements AfterViewInit {
   filmSearch: FilmSearch;
   title = 'Films';
   films = of([]);
-  genres = [];
+  genres: string[] = [];
   removeGenres = Function;
   @ViewChild(GenreFilterComponent) genreFilter;
   constructor(private filmService: FilmService) {
     this.resetSearch();
   }
   search(): void {
-    this.filmSearch.genreList = this.genres;
+    if (this.genres.length !== 0){
+      this.filmSearch.genreList = this.genres;
+      console.log(this.filmSearch);
+    }
     console.log(this.filmSearch);
     this.films = this.filmService.search(this.filmSearch).pipe(map(films =>
       films.map(film => {
-          return {
+        return {
+            id: film.id,
             title: film.title,
             description: film.description,
-            release_date: film.release_date,
-            genreList: film.genreList
+            date: film.date,
+            genreList: film.genreList,
+            poster: this.filmService.pictures(film.id)
           };
         }
       )
     ));
+  }
+  arrayBufferToBase64( buffer ): string {
+    let binary = '';
+    const bytes = new Uint8Array( buffer );
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
   }
   resetSearch(): void {
     this.filmSearch = {};

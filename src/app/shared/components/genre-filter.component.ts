@@ -3,8 +3,9 @@ import {ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import {GenreService} from '../../modules/admin/services/genre.service';
 
 /**
  * @title Chips Autocomplete
@@ -17,15 +18,12 @@ import {map, startWith} from 'rxjs/operators';
 export class GenreFilterComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   genreCtrl = new FormControl('');
-  filteredGenres: Observable<string[]>;
   genres: string[] = [];
-  allGenres: string[] = ['action', 'sci-fi', 'historic', 'romance', 'comedy'];
+  allGenres: Observable<string[]> = of([]);
   @ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
-  constructor() {
-    this.filteredGenres = this.genreCtrl.valueChanges.pipe(
-      startWith(null),
-      map((genre: string | null) => (genre ? this._filter(genre) : this.allGenres.slice())),
-    );
+  constructor(private genreService: GenreService) {
+    this.allGenres = this.genreService.search({}).pipe(map(genres => genres.map(genre => genre.name)
+    ));
   }
 
   add(event: MatChipInputEvent): void {
@@ -51,18 +49,9 @@ export class GenreFilterComponent {
       this.genres.splice(index, 1);
     }
   }
-  removeAll(): void{
-    this.genres.splice(0);
-  }
   selected(event: MatAutocompleteSelectedEvent): void {
     this.genres.push(event.option.viewValue);
     this.genreInput.nativeElement.value = '';
     this.genreCtrl.setValue(null);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.allGenres.filter(genre => genre.toLowerCase().includes(filterValue));
   }
 }
