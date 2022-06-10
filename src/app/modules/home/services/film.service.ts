@@ -11,6 +11,7 @@ import {EndPoints} from '@shared/end-points';
 })
 export class FilmService {
   static SEARCH = '/search';
+  static PICTURES = '/pictures';
 
   constructor(private httpService: HttpService) {
   }
@@ -21,20 +22,11 @@ export class FilmService {
   }
 
   search(filmSearch: FilmSearch): Observable<Film[]> {
-    // return this.httpService
-    //  .paramsFrom(filmSearch)
-    //  .get(EndPoints.FILMS + FilmService.SEARCH);
-    return of([{title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']},
-                    {title: 'Example', description: 'This is an example', release_date: new Date(), genreList: ['action', 'sci-fi']}]);
+     return this.httpService
+      .paramsFrom(filmSearch)
+      .get(EndPoints.FILMS + FilmService.SEARCH);
+  }
+  pictures(id: number): string {
+    return EndPoints.FILMS + FilmService.PICTURES + '/' + id;
   }
 }

@@ -18,9 +18,9 @@
         <mat-card-content>
       <mat-selection-list  #filmSelected [multiple]="false">
         <mat-list-option *ngFor="let  film of films | async">
-            <img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hUupIkIKPpNLYniPGRxRpEQFrX3.jpg' matListAvatar alt="">
+            <img src="{{film.poster}}" matListAvatar alt="">
             <div matLine>{{ film.title }}</div>
-            <div matLine>({{ film.release_date.getFullYear() }})</div>
+            <div matLine>({{ film.date }})</div>
           <div matLine>
             <mat-chip-list>
               <mat-chip selected="true" color="accent"
@@ -29,6 +29,7 @@
               </mat-chip>
             </mat-chip-list>
             </div>
+            <div matLine>{{ film.description }}</div>
         </mat-list-option>
       </mat-selection-list>
     </mat-card-content>

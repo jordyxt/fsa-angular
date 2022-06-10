@@ -17,7 +17,7 @@
       (matChipInputTokenEnd)="add($event)">
   </mat-chip-list>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-    <mat-option *ngFor="let genre of filteredGenres | async" [value]="genre">
+    <mat-option *ngFor="let genre of allGenres | async" [value]="genre">
       {{genre}}
     </mat-option>
   </mat-autocomplete>

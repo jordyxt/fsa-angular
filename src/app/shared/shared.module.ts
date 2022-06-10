@@ -11,6 +11,7 @@ import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.compon
 import {MenuComponent} from '@shared/components/menu.component';
 import {RouterModule} from '@angular/router';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
+import {HttpService} from '@core/services/http.service';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
     MenuComponent,
     GenreFilterComponent
   ],
-  providers: [],
+  providers: [HttpService],
   exports: [
     CommonModule,
     FlexLayoutModule,
