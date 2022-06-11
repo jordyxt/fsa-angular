@@ -1,6 +1,4 @@
-import {Genre} from '../../admin/models/genre.model';
-
-export interface Series {
+export interface SeriesSearch {
   id: number;
   title: string;
   description: string;

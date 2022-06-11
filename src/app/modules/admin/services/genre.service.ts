@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 
 import {HttpService} from '@core/services/http.service';
 import {Genre} from '../models/genre.model';
-import {GenreSearch} from '@shared/models/genre-search.model';
+import {GenreFilter} from '@shared/models/genre-filter.model';
 import {EndPoints} from '@shared/end-points';
 
 @Injectable({
@@ -31,7 +31,7 @@ export class GenreService {
       .put(EndPoints.GENRES + '/' + oldName, genre);
   }
 
-  search(genreSearch: GenreSearch): Observable<Genre[]> {
+  search(genreSearch: GenreFilter): Observable<Genre[]> {
     return this.httpService
       .paramsFrom(genreSearch)
       .get(EndPoints.GENRES + GenreService.SEARCH);

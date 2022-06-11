@@ -2,9 +2,11 @@ import {Injectable} from '@angular/core';
 import {from, Observable, of} from 'rxjs';
 
 import {HttpService} from '@core/services/http.service';
-import {Film} from '../models/film.model';
-import {FilmSearch} from '@shared/models/film-search.model';
+import {FilmSearch} from '../../home/models/film-search.model';
+import {FilmFilter} from '@shared/models/film-filter.model';
 import {EndPoints} from '@shared/end-points';
+import {Genre} from '../models/genre.model';
+import {Film} from '../../home/models/film.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +18,17 @@ export class FilmService {
   constructor(private httpService: HttpService) {
   }
 
-  read(name: string): Observable<Film> {
+  read(name: string): Observable<FilmSearch> {
     return this.httpService
       .get(EndPoints.FILMS + '/' + name);
   }
 
-  search(filmSearch: FilmSearch): Observable<Film[]> {
+  create(film: Film): Observable<Film> {
+    return this.httpService
+      .post(EndPoints.GENRES, film);
+  }
+
+  search(filmSearch: FilmFilter): Observable<FilmSearch[]> {
      return this.httpService
       .paramsFrom(filmSearch)
       .get(EndPoints.FILMS + FilmService.SEARCH);

@@ -8,11 +8,13 @@ import {HttpService} from '@core/services/http.service';
 import {GenrePageComponent} from './pages/genre-page/genre-page.component';
 import {GenreDialogComponent} from './dialogs/genre-dialog/genre-dialog.component';
 import {SharedModule} from '@shared/shared.module';
+import {FilmDialogComponent} from './dialogs/film-dialog/film-dialog.component';
 
 @NgModule({
   declarations: [
     GenrePageComponent,
-    GenreDialogComponent
+    GenreDialogComponent,
+    FilmDialogComponent
   ],
   imports: [
     CommonModule,

@@ -6,6 +6,7 @@ import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable, of} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import {GenreService} from '../../modules/admin/services/genre.service';
+import {any} from 'codelyzer/util/function';
 
 /**
  * @title Chips Autocomplete
@@ -18,20 +19,28 @@ import {GenreService} from '../../modules/admin/services/genre.service';
 export class GenreFilterComponent {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   genreCtrl = new FormControl('');
+  filteredGenres: Observable<string[]>;
   genres: string[] = [];
   allGenres: Observable<string[]> = of([]);
   @ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
   constructor(private genreService: GenreService) {
-    this.allGenres = this.genreService.search({}).pipe(map(genres => genres.map(genre => genre.name)
-    ));
+    this.allGenres = this.genreService.search({}).pipe(map(genres => genres.map(genre => genre.name)));
+    this.genreCtrl.valueChanges.subscribe(value => {
+      this.filteredGenres = value ? this.genreService.search({name: value}).
+      pipe(map(genres => genres.map(genre => genre.name))) : of([]);
+    });
   }
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
     // Add our genre
-    if (value) {
-      this.genres.push(value);
+    if (value && !this.genres.includes(value)) {
+      this.allGenres.subscribe(genres => {
+        if (genres.includes(value)) {
+          this.genres.push(value);
+        }
+      });
     }
 
     // Clear the input value
@@ -50,8 +59,11 @@ export class GenreFilterComponent {
     }
   }
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.genres.push(event.option.viewValue);
+    if (!this.genres.includes(event.option.viewValue)){
+      this.genres.push(event.option.viewValue);
+    }
     this.genreInput.nativeElement.value = '';
+    this.genreInput.nativeElement.blur();
     this.genreCtrl.setValue(null);
   }
 }
