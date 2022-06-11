@@ -1,4 +1,4 @@
-export interface FilmSearch {
+export interface FilmFilter {
   title?: string;
   genreList?: string[];
 }

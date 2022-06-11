@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input [(ngModel)]="film.title" matInput required type="text"/>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Description</mat-label>
+    <textarea [(ngModel)]="film.description" matInput required type="text"></textarea>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input [(ngModel)]="film.releaseYear" matInput required type="date"/>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Trailer</mat-label>
+    <input [(ngModel)]="film.trailer" matInput required type="text"/>
+  </mat-form-field>
+  <app-genre-filter></app-genre-filter>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button cdkFocusInitial mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="create()" *ngIf="isCreate()" color="primary" mat-raised-button>Create
+  </button>
+</mat-dialog-actions>

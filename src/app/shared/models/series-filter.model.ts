@@ -1,4 +1,4 @@
-export interface SeriesSearch {
+export interface SeriesFilter {
   title?: string;
   genreList?: string[];
 }

@@ -1,9 +1,12 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
-import {FilmSearch} from '@shared/models/film-search.model';
+import {FilmFilter} from '@shared/models/film-filter.model';
 import {of} from 'rxjs';
-import {FilmService} from '../../services/film.service';
+import {FilmService} from '../../../admin/services/film.service';
 import {map} from 'rxjs/operators';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
+import {GenreDialogComponent} from '../../../admin/dialogs/genre-dialog/genre-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
+import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
 
 @Component({
   selector: 'app-film-search-page',
@@ -11,13 +14,12 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
   styleUrls: ['./film-search-page.component.css']
 })
 export class FilmSearchPageComponent  implements AfterViewInit {
-  filmSearch: FilmSearch;
+  filmSearch: FilmFilter;
   title = 'Films';
   films = of([]);
   genres: string[] = [];
-  removeGenres = Function;
   @ViewChild(GenreFilterComponent) genreFilter;
-  constructor(private filmService: FilmService) {
+  constructor(private dialog: MatDialog, private filmService: FilmService) {
     this.resetSearch();
   }
   search(): void {
@@ -40,14 +42,10 @@ export class FilmSearchPageComponent  implements AfterViewInit {
       )
     ));
   }
-  arrayBufferToBase64( buffer ): string {
-    let binary = '';
-    const bytes = new Uint8Array( buffer );
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) {
-      binary += String.fromCharCode( bytes[ i ] );
-    }
-    return window.btoa( binary );
+  create(): void {
+    this.dialog.open(FilmDialogComponent, { disableClose: true }).afterClosed().subscribe(() =>
+      this.search()
+    );
   }
   resetSearch(): void {
     this.filmSearch = {};

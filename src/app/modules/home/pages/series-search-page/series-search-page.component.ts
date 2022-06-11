@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
-import {SeriesSearch} from '@shared/models/series-search.model';
+import {SeriesFilter} from '@shared/models/series-filter.model';
 import {of} from 'rxjs';
-import {SeriesService} from '../../services/series.service';
+import {SeriesService} from '../../../admin/services/series.service';
 import {map} from 'rxjs/operators';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 
@@ -11,7 +11,7 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
   styleUrls: ['./series-search-page.component.css']
 })
 export class SeriesSearchPageComponent implements AfterViewInit {
-  seriesSearch: SeriesSearch;
+  seriesSearch: SeriesFilter;
   title = 'Series';
   seriesList = of([]);
   genres: string[] = [];

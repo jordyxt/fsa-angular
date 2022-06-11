@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {GenreSearch} from '@shared/models/genre-search.model';
+import {GenreFilter} from '@shared/models/genre-filter.model';
 import {of} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {GenreService} from '../../services/genre.service';
@@ -15,7 +15,7 @@ import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.compon
   styleUrls: ['./genre-page.component.css']
 })
 export class GenrePageComponent {
-  genreSearch: GenreSearch;
+  genreSearch: GenreFilter;
   title = 'Genres management';
   genres = of([]);
   constructor( private dialog: MatDialog, private genreService: GenreService) {
