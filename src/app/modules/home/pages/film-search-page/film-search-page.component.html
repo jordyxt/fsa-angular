@@ -20,7 +20,7 @@
         <mat-list-option *ngFor="let  film of films | async">
             <img src="{{film.poster}}" matListAvatar alt="">
             <div matLine>{{ film.title }}</div>
-            <div matLine>({{ film.date }})</div>
+            <div matLine>({{ film.releaseYear }})</div>
           <div matLine>
             <mat-chip-list>
               <mat-chip selected="true" color="accent"

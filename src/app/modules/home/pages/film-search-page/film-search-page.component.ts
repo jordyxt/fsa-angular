@@ -32,7 +32,7 @@ export class FilmSearchPageComponent  implements AfterViewInit {
             id: film.id,
             title: film.title,
             description: film.description,
-            date: film.date,
+            releaseYear: film.releaseYear,
             genreList: film.genreList,
             poster: this.filmService.pictures(film.id)
           };
