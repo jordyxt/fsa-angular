@@ -4,6 +4,6 @@ export interface Film {
   id: number;
   title: string;
   description: string;
-  date: string;
+  releaseYear: string;
   genreList: string[];
 }
