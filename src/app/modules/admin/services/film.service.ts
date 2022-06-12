@@ -18,9 +18,9 @@ export class FilmService {
   constructor(private httpService: HttpService) {
   }
 
-  read(name: string): Observable<FilmSearch> {
+  read(id: number): Observable<Film> {
     return this.httpService
-      .get(EndPoints.FILMS + '/' + name);
+      .get(EndPoints.FILMS + '/' + id);
   }
 
   create(film: Film): Observable<Film> {

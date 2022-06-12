@@ -55,4 +55,8 @@ export class FilmSearchPageComponent  implements AfterViewInit {
   ngAfterViewInit(): void {
     this.genres = this.genreFilter.genres;
   }
+
+  onSelect(filmSelected): void {
+    console.log(filmSelected.selectedOptions.selected[0]?.value.id);
+  }
 }
