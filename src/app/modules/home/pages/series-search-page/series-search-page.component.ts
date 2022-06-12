@@ -4,6 +4,9 @@ import {of} from 'rxjs';
 import {SeriesService} from '../../../admin/services/series.service';
 import {map} from 'rxjs/operators';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
+import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
+import {SeriesDialogComponent} from '../../../admin/dialogs/series-dialog/series-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-series-search-page',
@@ -17,7 +20,7 @@ export class SeriesSearchPageComponent implements AfterViewInit {
   genres: string[] = [];
   removeGenres = Function;
   @ViewChild(GenreFilterComponent) genreFilter;
-  constructor(private seriesService: SeriesService) {
+  constructor(private dialog: MatDialog, private seriesService: SeriesService) {
     this.resetSearch();
   }
   search(): void {
@@ -40,6 +43,11 @@ export class SeriesSearchPageComponent implements AfterViewInit {
         }
       )
     ));
+  }
+  create(): void {
+    this.dialog.open(SeriesDialogComponent, { disableClose: true }).afterClosed().subscribe(() =>
+      this.search()
+    );
   }
   resetSearch(): void {
     this.seriesSearch = {};

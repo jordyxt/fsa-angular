@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input [(ngModel)]="series.title" matInput required type="text"/>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Description</mat-label>
+    <textarea [(ngModel)]="series.description" matInput required type="text"></textarea>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Release Date</mat-label>
+    <input [(ngModel)]="releaseDate" matInput required [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Season's Number</mat-label>
+    <input [(ngModel)]="series.seasons" matInput required type="number"/>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Ending Date</mat-label>
+    <input [(ngModel)]="endingDate" matInput required [matDatepicker]="picker2">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <mat-label>Trailer</mat-label>
+    <input [(ngModel)]="series.trailer" matInput type="text"/>
+  </mat-form-field>
+  <app-genre-filter></app-genre-filter>
+  <label>Poster</label>
+  <input (change)="onFileSelected($event)" type="file">
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button cdkFocusInitial mat-dialog-close mat-raised-button>Close</button>
+  <button (click)="create()" *ngIf="isCreate()" [disabled]=invalid() color="primary" mat-raised-button>Create
+  </button>
+</mat-dialog-actions>
