@@ -1,0 +1,19 @@
+.container {
+  padding: 20px 40px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+.iframe_mobile {
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+}
+.iframe_desktop {
+  width: 550px;
+  height: 350px;
+}
