@@ -25,7 +25,7 @@ export class FilmService {
 
   create(film: Film): Observable<Film> {
     return this.httpService
-      .post(EndPoints.GENRES, film);
+      .post(EndPoints.FILMS, film);
   }
 
   search(filmSearch: FilmFilter): Observable<FilmSearch[]> {
