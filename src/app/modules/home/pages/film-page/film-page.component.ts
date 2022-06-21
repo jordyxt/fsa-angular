@@ -8,8 +8,11 @@ import {GenreDialogComponent} from '../../../admin/dialogs/genre-dialog/genre-di
 import {MatDialog} from '@angular/material/dialog';
 import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
 import {ActivatedRoute} from '@angular/router';
-import {Film} from '../../models/film.model';
+import {Film} from '../../../admin/models/film.model';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {MatSliderChange} from '@angular/material/slider';
+import {RatingService} from '../../../admin/services/rating.service';
+import {AuthService} from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-film-page',
@@ -20,8 +23,16 @@ export class FilmPageComponent implements OnInit {
   film: Film;
   mobile: boolean;
   trailer: SafeResourceUrl;
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private filmService: FilmService) {
+  rating: number;
+  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private filmService: FilmService,
+              private ratingService: RatingService, private authService: AuthService) {
+    this.film = {
+      title: undefined, description: undefined, releaseDate: undefined,
+      genreList: [], trailer: undefined, poster: undefined, rating: undefined
+    };
+    this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl('');
   }
+
   ngOnInit(): void {
     if (window.screen.width === 425) {
       this.mobile = true;
@@ -33,6 +44,17 @@ export class FilmPageComponent implements OnInit {
         this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
         console.log(value);
       });
+      if (this.isAuthenticated()){
+        this.ratingService.read(params.id).subscribe(value => {
+          this.rating = value;
+        });
+      }
     });
+  }
+  isAuthenticated(): boolean {
+    return this.authService.isAuthenticated();
+  }
+  sendRating(event): void {
+    this.ratingService.create({videoProductionId: this.film.id, rating: event.value}).subscribe(() => {});
   }
 }
