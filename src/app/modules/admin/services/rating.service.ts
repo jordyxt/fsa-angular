@@ -7,33 +7,25 @@ import {FilmFilter} from '@shared/models/film-filter.model';
 import {EndPoints} from '@shared/end-points';
 import {Genre} from '../models/genre.model';
 import {Film} from '../models/film.model';
+import {Rating} from '../models/rating.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FilmService {
+export class RatingService {
   static SEARCH = '/search';
   static PICTURES = '/pictures';
 
   constructor(private httpService: HttpService) {
   }
 
-  read(id: number): Observable<Film> {
+  read(id: number): Observable<number> {
     return this.httpService
-      .get(EndPoints.FILMS + '/' + id);
+      .get(EndPoints.RATINGS + '/' + id);
   }
 
-  create(film: Film): Observable<Film> {
+  create(rating: Rating): Observable<number> {
     return this.httpService
-      .post(EndPoints.FILMS, film);
-  }
-
-  search(filmSearch: FilmFilter): Observable<FilmSearch[]> {
-     return this.httpService
-      .paramsFrom(filmSearch)
-      .get(EndPoints.FILMS + FilmService.SEARCH);
-  }
-  pictures(id: number): string {
-    return EndPoints.FILMS + FilmService.PICTURES + '/' + id;
+      .post(EndPoints.RATINGS, rating);
   }
 }

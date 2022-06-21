@@ -5,7 +5,7 @@ import {HttpService} from '@core/services/http.service';
 import {SeriesSearch} from '../../home/models/series-search.model';
 import {FilmFilter} from '@shared/models/film-filter.model';
 import {EndPoints} from '@shared/end-points';
-import {Series} from '../../home/models/series.model';
+import {Series} from '../models/series.model';
 
 @Injectable({
   providedIn: 'root',

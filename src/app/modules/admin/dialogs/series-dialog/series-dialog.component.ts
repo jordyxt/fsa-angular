@@ -1,10 +1,10 @@
 import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FilmService} from '../../services/film.service';
-import {Film} from '../../../home/models/film.model';
+import {Film} from '../../models/film.model';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {SeriesService} from '../../services/series.service';
-import {Series} from '../../../home/models/series.model';
+import {Series} from '../../models/series.model';
 
 @Component({
   selector: 'app-series-dialog',
