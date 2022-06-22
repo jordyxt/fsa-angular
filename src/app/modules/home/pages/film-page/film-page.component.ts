@@ -33,7 +33,9 @@ export class FilmPageComponent implements OnInit {
       this.filmService.read(params.id).subscribe(value => {
         this.film = value;
         this.film.poster = this.filmService.pictures(params.id);
-        this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
+        if (value.trailer){
+          this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
+        }
       });
       if (this.isAuthenticated()){
         this.ratingService.read(params.id).subscribe(value => {

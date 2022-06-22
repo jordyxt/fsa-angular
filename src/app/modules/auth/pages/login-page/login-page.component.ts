@@ -17,7 +17,7 @@ export class LoginPageComponent {
     this.auth.login(this.username, this.password).subscribe(
       () => {
         if (this.auth.isBasic() || this.auth.isAdmin()) {
-          this.router.navigate(['films']).then();
+          this.router.navigate(['series']).then();
         }
       }
     );
