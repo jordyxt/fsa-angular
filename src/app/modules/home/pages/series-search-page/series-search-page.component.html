@@ -20,7 +20,7 @@
       <mat-card>
         <mat-card-content>
       <mat-selection-list  #filmSelected [multiple]="false">
-        <mat-list-option *ngFor="let  series of seriesList | async">
+        <mat-list-option *ngFor="let  series of seriesList | async" [value]="series" [routerLink]="['/series', series.id]">
             <img src="{{series.poster}}" matListAvatar alt="">
             <div matLine>{{ series.title }}</div>
             <div matLine>({{ series.releaseYear }} - {{series.endingYear}})</div>
@@ -32,7 +32,6 @@
               </mat-chip>
             </mat-chip-list>
             </div>
-            <div matLine>{{ series.description }}</div>
         </mat-list-option>
       </mat-selection-list>
     </mat-card-content>
