@@ -43,7 +43,10 @@ export class SeriesPageComponent implements OnInit {
       this.seriesService.read(params.id).subscribe(value => {
         this.series = value;
         this.series.poster = this.seriesService.pictures(params.id);
-        this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
+        if (value.trailer){
+          this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
+        }
+
       });
       if (this.isAuthenticated()){
         this.ratingService.read(params.id).subscribe(value => {
