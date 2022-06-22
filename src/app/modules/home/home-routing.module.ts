@@ -5,6 +5,7 @@ import {HomeComponent} from './home.component';
 import {FilmSearchPageComponent} from './pages/film-search-page/film-search-page.component';
 import {SeriesSearchPageComponent} from './pages/series-search-page/series-search-page.component';
 import {FilmPageComponent} from './pages/film-page/film-page.component';
+import {SeriesPageComponent} from './pages/series-page/series-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'films/:id',
     component: FilmPageComponent
+  },
+  {
+    path: 'series/:id',
+    component: SeriesPageComponent
   }
 ];
 

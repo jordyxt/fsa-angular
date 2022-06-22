@@ -1,0 +1,59 @@
+<app-menu></app-menu>
+<div class="container">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{series.title}}</mat-card-title>
+      <mat-card-subtitle>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let genre of series.genreList">
+            {{genre}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Rating:</p>
+        <div>
+          {{series.rating}}<mat-icon>star</mat-icon>/10<mat-icon>star</mat-icon>
+        </div>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Release Date / Ending Date:</p>
+        <p>
+          {{series.releaseDate}} / {{series.endingDate}}
+        </p>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Seasons:</p>
+        <p>
+          {{series.seasons}}
+        </p>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Description:</p>
+        <p>
+          {{series.description}}
+        </p>
+      </mat-card-subtitle>
+      <div *ngIf="!mobile">
+        <mat-card>
+          <img  src="{{series.poster}}" width="250px" height="400px">
+        </mat-card>
+      </div>
+    </mat-card-title-group>
+    <div *ngIf="isAuthenticated()">
+      <p class="mat-body-2">Rate your series:</p>
+      <span *ngIf="rating!=undefined">{{rating}} of 10</span>
+      <ngx-material-rating [dense]="true" color="warn"  [(ngModel)]="rating" [max]="10" (change)="sendRating($event)">
+      </ngx-material-rating>
+    </div>
+    <div *ngIf="mobile">
+      <mat-card>
+        <img  src="{{series.poster}}" width="250px" height="400px">
+      </mat-card>
+    </div>
+    <p class="mat-body-2">Video:</p>
+    <iframe [ngClass]="mobile ? 'iframe_mobile' : 'iframe_desktop'"
+            [src]="trailer">
+    </iframe>
+  </mat-card>
+</div>

@@ -20,9 +20,9 @@ export class SeriesService {
     return this.httpService
       .post(EndPoints.SERIES, series);
   }
-  read(name: string): Observable<SeriesSearch> {
+  read(id: number): Observable<Series> {
     return this.httpService
-      .get(EndPoints.SERIES + '/' + name);
+      .get(EndPoints.SERIES + '/' + id);
   }
 
   search(filmSearch: FilmFilter): Observable<SeriesSearch[]> {

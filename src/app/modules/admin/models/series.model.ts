@@ -8,4 +8,5 @@ export interface Series {
   genreList: string[];
   trailer: string;
   poster: string;
+  rating?: number;
 }
