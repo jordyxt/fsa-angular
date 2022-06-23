@@ -10,13 +10,17 @@ import {GenreDialogComponent} from './dialogs/genre-dialog/genre-dialog.componen
 import {SharedModule} from '@shared/shared.module';
 import {FilmDialogComponent} from './dialogs/film-dialog/film-dialog.component';
 import {SeriesDialogComponent} from './dialogs/series-dialog/series-dialog.component';
+import {WorkerDialogComponent} from './dialogs/worker-dialog/worker-dialog.component';
+import {WorkerPageComponent} from './pages/worker-page/worker-page.component';
 
 @NgModule({
   declarations: [
     GenrePageComponent,
     GenreDialogComponent,
     FilmDialogComponent,
-    SeriesDialogComponent
+    SeriesDialogComponent,
+    WorkerPageComponent,
+    WorkerDialogComponent
   ],
   imports: [
     CommonModule,
