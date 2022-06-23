@@ -6,4 +6,5 @@ export class EndPoints {
   static FILMS = environment.REST_FSA + '/films';
   static SERIES = environment.REST_FSA + '/series';
   static RATINGS = environment.REST_FSA + '/ratings';
+  static WORKERS = environment.REST_FSA + '/workers';
 }
