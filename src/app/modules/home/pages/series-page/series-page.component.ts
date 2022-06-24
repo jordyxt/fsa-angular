@@ -30,7 +30,8 @@ export class SeriesPageComponent implements OnInit {
               private ratingService: RatingService, private authService: AuthService) {
     this.series = {
       title: undefined, description: undefined, releaseDate: undefined,
-      genreList: [], trailer: undefined, poster: undefined, endingDate: undefined, seasons: undefined, rating: undefined
+      genreList: [], trailer: undefined, poster: undefined, endingDate: undefined, seasons: undefined, rating: undefined,
+      directorList: [], actorList: []
     };
     this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl('');
   }
