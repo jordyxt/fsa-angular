@@ -3,4 +3,5 @@ export interface Worker {
   name: string;
   description: string;
   birthdate: string;
+  videoProductionWorkerRoleList: string[];
 }

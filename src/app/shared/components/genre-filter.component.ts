@@ -8,9 +8,6 @@ import {map, startWith} from 'rxjs/operators';
 import {GenreService} from '../../modules/admin/services/genre.service';
 import {any} from 'codelyzer/util/function';
 
-/**
- * @title Chips Autocomplete
- */
 @Component({
   selector: 'app-genre-filter',
   templateUrl: 'genre-filter.component.html',

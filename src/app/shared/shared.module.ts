@@ -12,6 +12,7 @@ import {MenuComponent} from '@shared/components/menu.component';
 import {RouterModule} from '@angular/router';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {HttpService} from '@core/services/http.service';
+import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {HttpService} from '@core/services/http.service';
     CrudComponent,
     CancelYesDialogComponent,
     MenuComponent,
-    GenreFilterComponent
+    GenreFilterComponent,
+    WorkerRoleFilterComponent
   ],
   providers: [HttpService],
   exports: [
@@ -45,7 +47,8 @@ import {HttpService} from '@core/services/http.service';
     CrudComponent,
     CancelYesDialogComponent,
     MenuComponent,
-    GenreFilterComponent
+    GenreFilterComponent,
+    WorkerRoleFilterComponent
   ],
   entryComponents: [
     ReadDetailDialogComponent,
