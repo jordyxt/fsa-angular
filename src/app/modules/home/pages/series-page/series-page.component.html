@@ -34,6 +34,22 @@
           {{series.description}}
         </p>
       </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Director:</p>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let director of series.directorList">
+            {{director}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
+      <mat-card-subtitle>
+        <p class="mat-body-2">Stars:</p>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let actor of series.actorList">
+            {{actor}}
+          </mat-chip>
+        </mat-chip-list>
+      </mat-card-subtitle>
       <div *ngIf="!mobile">
         <mat-card>
           <img  src="{{series.poster}}" width="250px" height="400px">

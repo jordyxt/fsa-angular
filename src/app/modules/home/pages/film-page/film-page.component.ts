@@ -20,7 +20,8 @@ export class FilmPageComponent implements OnInit {
               private ratingService: RatingService, private authService: AuthService) {
     this.film = {
       title: undefined, description: undefined, releaseDate: undefined,
-      genreList: [], trailer: undefined, poster: undefined, rating: undefined
+      genreList: [], trailer: undefined, poster: undefined, rating: undefined,
+      directorList: [], actorList: []
     };
     this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl('');
   }

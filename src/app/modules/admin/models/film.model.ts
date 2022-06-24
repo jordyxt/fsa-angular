@@ -7,4 +7,6 @@ export interface Film {
   trailer: string;
   poster: string;
   rating?: number;
+  directorList: string[];
+  actorList: string[];
 }

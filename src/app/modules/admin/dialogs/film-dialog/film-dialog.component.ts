@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FilmService} from '../../services/film.service';
 import {Film} from '../../models/film.model';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
+import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 
 @Component({
   selector: 'app-film-dialog',
@@ -16,11 +17,14 @@ export class FilmDialogComponent implements AfterViewInit  {
   oldTitle: string;
   releaseDate: Date;
   @ViewChild(GenreFilterComponent) genreFilter;
+  @ViewChild('directorFilter') directorFilter;
+  @ViewChild('actorFilter') actorFilter;
   constructor(@Inject(MAT_DIALOG_DATA) data: Film, private filmService: FilmService, private dialog: MatDialog) {
     this.title = data ? 'Update film' : 'Create Film';
     this.releaseDate = undefined;
     this.film = data ? data : {
-      title: undefined, description: undefined, releaseDate: undefined, genreList: [], trailer: undefined, poster: undefined
+      title: undefined, description: undefined, releaseDate: undefined, genreList: [], trailer: undefined, poster: undefined,
+      directorList: [], actorList: []
     };
     this.oldTitle = data ? data.title : undefined;
   }
@@ -62,5 +66,7 @@ export class FilmDialogComponent implements AfterViewInit  {
   }
   ngAfterViewInit(): void {
     this.film.genreList = this.genreFilter.genres;
+    this.film.directorList = this.directorFilter.workers;
+    this.film.actorList = this.actorFilter.workers;
   }
 }

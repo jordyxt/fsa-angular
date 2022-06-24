@@ -9,4 +9,6 @@ export interface Series {
   trailer: string;
   poster: string;
   rating?: number;
+  directorList: string[];
+  actorList: string[];
 }

@@ -30,7 +30,12 @@
     <mat-label>Trailer</mat-label>
     <input [(ngModel)]="series.trailer" matInput type="text"/>
   </mat-form-field>
-  <app-genre-filter></app-genre-filter>
+  <mat-label>Genres:</mat-label>
+  <app-genre-filter #genreFilter></app-genre-filter>
+  <mat-label>Directors:</mat-label>
+  <app-worker-filter #directorFilter></app-worker-filter>
+  <mat-label>Actors:</mat-label>
+  <app-worker-filter #actorFilter></app-worker-filter>
   <label>Poster</label>
   <input (change)="onFileSelected($event)" type="file">
 </mat-dialog-content>

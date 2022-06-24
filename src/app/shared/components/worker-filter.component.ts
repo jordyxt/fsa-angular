@@ -47,8 +47,8 @@ export class WorkerFilterComponent {
     this.workerCtrl.setValue(null);
   }
 
-  remove(genre: string): void {
-    const index = this.workers.indexOf(genre);
+  remove(worker: string): void {
+    const index = this.workers.indexOf(worker);
 
     if (index >= 0) {
       this.workers.splice(index, 1);

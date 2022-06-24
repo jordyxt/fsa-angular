@@ -19,12 +19,14 @@ export class SeriesDialogComponent implements AfterViewInit  {
   releaseDate: Date;
   endingDate: Date;
   @ViewChild(GenreFilterComponent) genreFilter;
+  @ViewChild('directorFilter') directorFilter;
+  @ViewChild('actorFilter') actorFilter;
   constructor(@Inject(MAT_DIALOG_DATA) data: Series, private seriesService: SeriesService, private dialog: MatDialog) {
     this.title = data ? 'Update series' : 'Create series';
     this.releaseDate = undefined;
     this.series = data ? data : {
       title: undefined, description: undefined, releaseDate: undefined, seasons: undefined, endingDate: undefined,
-      genreList: [], trailer: undefined, poster: undefined
+      genreList: [], trailer: undefined, poster: undefined, directorList: [], actorList: []
     };
     this.oldTitle = data ? data.title : undefined;
   }
@@ -70,5 +72,7 @@ export class SeriesDialogComponent implements AfterViewInit  {
   }
   ngAfterViewInit(): void {
     this.series.genreList = this.genreFilter.genres;
+    this.series.directorList = this.directorFilter.workers;
+    this.series.actorList = this.actorFilter.workers;
   }
 }
