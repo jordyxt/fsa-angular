@@ -7,6 +7,7 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {GenreDialogComponent} from '../../../admin/dialogs/genre-dialog/genre-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
+import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 
 @Component({
   selector: 'app-film-search-page',
@@ -18,13 +19,19 @@ export class FilmSearchPageComponent  implements AfterViewInit {
   title = 'Films';
   films = of([]);
   genres: string[] = [];
+  workers: string[] = [];
   @ViewChild(GenreFilterComponent) genreFilter;
+  @ViewChild(WorkerFilterComponent) workerFilter;
   constructor(private dialog: MatDialog, private filmService: FilmService) {
     this.resetSearch();
   }
   search(): void {
     if (this.genres.length !== 0){
       this.filmSearch.genreList = this.genres;
+      console.log(this.filmSearch);
+    }
+    if (this.workers.length !== 0){
+      this.filmSearch.workerList = this.workers;
       console.log(this.filmSearch);
     }
     console.log(this.filmSearch);
@@ -50,10 +57,12 @@ export class FilmSearchPageComponent  implements AfterViewInit {
   resetSearch(): void {
     this.filmSearch = {};
     this.genres.splice(0);
+    this.workers.splice(0);
     this.search();
   }
   ngAfterViewInit(): void {
     this.genres = this.genreFilter.genres;
+    this.workers = this.workerFilter.workers;
   }
 
   onSelect(filmSelected): void {

@@ -1,0 +1,24 @@
+<mat-form-field class="fsa-chip-list" appearance="fill">
+  <mat-label>Add workers</mat-label>
+  <mat-chip-list #chipList aria-label="Worker selection">
+    <mat-chip
+      *ngFor="let worker of workers" [removable]="true"
+      (removed)="remove(worker)">
+      {{worker}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="New actor or director..."
+      #genreInput
+      [formControl]="workerCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let worker of filteredWorkers | async" [value]="worker">
+      {{worker}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
