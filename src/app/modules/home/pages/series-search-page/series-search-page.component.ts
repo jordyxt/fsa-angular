@@ -7,6 +7,7 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
 import {SeriesDialogComponent} from '../../../admin/dialogs/series-dialog/series-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 
 @Component({
   selector: 'app-series-search-page',
@@ -18,15 +19,18 @@ export class SeriesSearchPageComponent implements AfterViewInit {
   title = 'Series';
   seriesList = of([]);
   genres: string[] = [];
-  removeGenres = Function;
+  workers: string[] = [];
   @ViewChild(GenreFilterComponent) genreFilter;
+  @ViewChild(WorkerFilterComponent) workerFilter;
   constructor(private dialog: MatDialog, private seriesService: SeriesService) {
     this.resetSearch();
   }
   search(): void {
     if (this.genres.length !== 0){
       this.seriesSearch.genreList = this.genres;
-      console.log(this.seriesSearch);
+    }
+    if (this.workers.length !== 0){
+      this.seriesSearch.workerList = this.workers;
     }
     console.log(this.seriesSearch);
     this.seriesList = this.seriesService.search(this.seriesSearch).pipe(map(seriesList =>
@@ -52,9 +56,11 @@ export class SeriesSearchPageComponent implements AfterViewInit {
   resetSearch(): void {
     this.seriesSearch = {};
     this.genres.splice(0);
+    this.workers.splice(0);
     this.search();
   }
   ngAfterViewInit(): void {
     this.genres = this.genreFilter.genres;
+    this.workers = this.workerFilter.workers;
   }
 }

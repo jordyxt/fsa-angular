@@ -13,6 +13,7 @@ import {RouterModule} from '@angular/router';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {HttpService} from '@core/services/http.service';
 import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.component';
+import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.c
     CancelYesDialogComponent,
     MenuComponent,
     GenreFilterComponent,
-    WorkerRoleFilterComponent
+    WorkerRoleFilterComponent,
+    WorkerFilterComponent
   ],
   providers: [HttpService],
   exports: [
@@ -48,7 +50,8 @@ import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.c
     CancelYesDialogComponent,
     MenuComponent,
     GenreFilterComponent,
-    WorkerRoleFilterComponent
+    WorkerRoleFilterComponent,
+    WorkerFilterComponent
   ],
   entryComponents: [
     ReadDetailDialogComponent,
