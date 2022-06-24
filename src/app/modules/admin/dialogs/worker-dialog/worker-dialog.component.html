@@ -9,9 +9,13 @@
     <input [(ngModel)]="worker.description" matInput required type="text"/>
   </mat-form-field>
   <mat-form-field class="full-width">
-    <mat-label>Birthdate:</mat-label>
-    <input [(ngModel)]="worker.birthdate" matInput required type="date"/>
+    <mat-label>Birthdate</mat-label>
+    <input [(ngModel)]="birthdate" matInput required [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
+  <app-worker-role-filter #workerRoleFilter></app-worker-role-filter>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button cdkFocusInitial mat-dialog-close mat-raised-button>Close</button>

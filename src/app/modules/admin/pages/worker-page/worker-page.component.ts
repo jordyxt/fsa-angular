@@ -8,6 +8,7 @@ import {Worker} from '../../models/worker.model';
 import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
 import {WorkerFilter} from '@shared/models/worker-filter.model';
 import {WorkerService} from '../../services/worker.service';
+import {WorkerDialogComponent} from '../../dialogs/worker-dialog/worker-dialog.component';
 
 @Component({
   selector: 'app-worker-page',
@@ -16,7 +17,7 @@ import {WorkerService} from '../../services/worker.service';
 })
 export class WorkerPageComponent {
   workerSearch: WorkerFilter;
-  title = 'Genres management';
+  title = 'Workers management';
   workers = of([]);
   constructor( private dialog: MatDialog, private workerService: WorkerService) {
     this.resetSearch();
@@ -28,7 +29,7 @@ export class WorkerPageComponent {
             id: worker.id,
             name: worker.name,
             description: worker.description,
-            bornDate: worker.birthdate
+            birthdate: worker.birthdate
           };
         }
       )
@@ -40,14 +41,14 @@ export class WorkerPageComponent {
   }
 
   create(): void {
-    this.dialog.open(GenreDialogComponent).afterClosed().subscribe(() =>
+    this.dialog.open(WorkerDialogComponent).afterClosed().subscribe(() =>
       this.search()
     );
   }
 
   update(worker: Worker): void {
     this.workerService.read(worker.id)
-      .subscribe(fullGenre => this.dialog.open(GenreDialogComponent, {data: fullGenre}).afterClosed().subscribe(() =>
+      .subscribe(fullWorker => this.dialog.open(WorkerDialogComponent, {data: fullWorker}).afterClosed().subscribe(() =>
         this.search()
       ));
   }
