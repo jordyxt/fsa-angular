@@ -2,7 +2,7 @@ export interface TopicSearch {
   id: number;
   title: string;
   description: string;
-  videoProduction: string;
+  videoProductionTitle: string;
   creationDate: string;
   username: string;
 }

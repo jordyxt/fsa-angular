@@ -24,11 +24,12 @@ export class ForumPageComponent  implements AfterViewInit {
   search(): void {
     this.topics = this.topicService.search(this.topicSearch).pipe(map(topics =>
       topics.map(topic => {
+          console.log(topic);
           return {
             id: topic.id,
             title: topic.title,
             description: topic.description,
-            videoProduction: topic.videoProduction,
+            videoProductionTitle: topic.videoProductionTitle,
             creationDate: topic.creationDate,
             username: topic.username
           };
