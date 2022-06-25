@@ -8,4 +8,5 @@ export class EndPoints {
   static RATINGS = environment.REST_FSA + '/ratings';
   static WORKERS = environment.REST_FSA + '/workers';
   static TOPICS = environment.REST_FSA + '/topics';
+  static VIDEO_PRODUCTIONS = environment.REST_FSA + '/video-productions';
 }
