@@ -1,12 +1,12 @@
 <h2 mat-dialog-title>{{title}}</h2>
 <mat-dialog-content>
   <mat-form-field class="full-width">
-    <mat-label>Name</mat-label>
+    <mat-label>Topic</mat-label>
     <input [(ngModel)]="topic.title" matInput required type="text"/>
   </mat-form-field>
   <mat-form-field class="full-width">
     <mat-label>Description</mat-label>
-    <input [(ngModel)]="topic.description" matInput required type="text"/>
+    <textarea [(ngModel)]="topic.description" matInput required type="text" [rows]="5"></textarea>
   </mat-form-field>
   <app-video-production-filter #videoProductionFilter></app-video-production-filter>
 </mat-dialog-content>
