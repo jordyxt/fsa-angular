@@ -59,6 +59,7 @@ export class VideoProductionFilterComponent {
   }
   selected(event: MatAutocompleteSelectedEvent): void {
     if (!this.videoProductions.includes(event.option.viewValue)){
+      this.videoProductions.splice(0);
       this.videoProductions.push(event.option.viewValue);
     }
     this.videoProductionInput.nativeElement.value = '';
