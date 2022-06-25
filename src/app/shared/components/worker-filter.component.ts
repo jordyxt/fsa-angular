@@ -30,10 +30,10 @@ export class WorkerFilterComponent {
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
-    // Add our genre
+    // Add our worker
     if (value && !this.workers.includes(value)) {
-      this.allWorkers.subscribe(genres => {
-        if (genres.includes(value)) {
+      this.allWorkers.subscribe(workers => {
+        if (workers.includes(value)) {
           this.workers.push(value);
         }
       });

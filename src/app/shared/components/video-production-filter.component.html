@@ -1,0 +1,24 @@
+<mat-form-field class="fsa-chip-list" appearance="fill">
+  <mat-label>Add genres</mat-label>
+  <mat-chip-list #chipList aria-label="Genre selection">
+    <mat-chip
+      *ngFor="let videoProduction of videoProductions" [removable]="true"
+      (removed)="remove(videoProduction)">
+      {{videoProduction}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input
+      placeholder="New genre..."
+      #videoProductionInput
+      [formControl]="videoProductionCtrl"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let videoProduction of filteredVideoProductions | async" [value]="videoProduction">
+      {{videoProduction}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

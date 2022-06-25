@@ -14,6 +14,7 @@ import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {HttpService} from '@core/services/http.service';
 import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.component';
 import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
+import {VideoProductionFilterComponent} from '@shared/components/video-production-filter.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {WorkerFilterComponent} from '@shared/components/worker-filter.component'
     MenuComponent,
     GenreFilterComponent,
     WorkerRoleFilterComponent,
-    WorkerFilterComponent
+    WorkerFilterComponent,
+    VideoProductionFilterComponent
   ],
   providers: [HttpService],
   exports: [
@@ -51,7 +53,8 @@ import {WorkerFilterComponent} from '@shared/components/worker-filter.component'
     MenuComponent,
     GenreFilterComponent,
     WorkerRoleFilterComponent,
-    WorkerFilterComponent
+    WorkerFilterComponent,
+    VideoProductionFilterComponent
   ],
   entryComponents: [
     ReadDetailDialogComponent,
