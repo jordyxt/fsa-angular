@@ -5,7 +5,7 @@ import {ForumPageComponent} from './pages/forum-page.component';
 
 const routes: Routes = [
   {
-    path: 'forum',
+    path: '',
     component: ForumPageComponent
   }
 ];

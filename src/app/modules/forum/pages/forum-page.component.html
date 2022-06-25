@@ -21,12 +21,12 @@
           <mat-selection-list [multiple]="false">
             <mat-list-option *ngFor="let  topic of topics | async" [value]="topic" [routerLink]="['/forum', topic.id]">
               <div matLine>{{ topic.title }}</div>
+              <div matLine>By {{topic.username}} on  {{ topic.creationDate }}</div>
               <div matLine>
                 <mat-chip-list>
                   <mat-chip selected="true" color="accent">
-                    {{topic.videoProduction}}
+                    {{topic.videoProductionTitle}}
                   </mat-chip>
-                  <div matLine>({{ topic.creationDate }})</div>
                 </mat-chip-list>
               </div>
             </mat-list-option>
