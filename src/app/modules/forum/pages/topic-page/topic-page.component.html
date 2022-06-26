@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div class="container">
+<mat-card>
+  <mat-card-title>{{topic.title}}</mat-card-title>
+  <mat-card-subtitle>
+    <mat-chip-list>
+  <mat-chip>
+    {{topic.videoProductionTitle}}
+  </mat-chip>
+    </mat-chip-list>
+  </mat-card-subtitle>
+<mat-card-content>
+  {{topic.description}}
+  <p align="end">By {{topic.username}} on {{topic.creationDate}}</p>
+</mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
+  <mat-card-content>{{topic.description}}
+    <p align="end">{{topic.creationDate}}</p>
+  </mat-card-content>
+</mat-card>
+  <br>
+<mat-card>
+  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
+  <mat-card-content>{{topic.description}}</mat-card-content>
+</mat-card>
+  <br>
+<mat-card>
+  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
+  <mat-card-content>{{topic.description}}</mat-card-content>
+</mat-card>
+  <br>
+  <mat-card>
+  <mat-form-field class="full-width">
+    <mat-label>Message</mat-label>
+    <textarea [(ngModel)]="newMessage" matInput required type="text" [rows]="5"></textarea>
+  </mat-form-field>
+    <mat-card-actions align="end">
+      <button mat-button (click)="sendMessage()">Send</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
