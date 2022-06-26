@@ -34,5 +34,6 @@
 <nav mat-tab-nav-bar mat-align-tabs="center">
   <a mat-tab-link routerLink="/films">Films</a>
   <a mat-tab-link routerLink="/series">Series</a>
+  <a mat-tab-link routerLink="/my-list" *ngIf="isAuthenticated()">My List</a>
 </nav>
 
