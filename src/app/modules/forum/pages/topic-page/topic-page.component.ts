@@ -23,11 +23,10 @@ import {MessageSearch} from '../../models/message-search.model';
   templateUrl: './topic-page.component.html',
   styleUrls: ['./topic-page.component.css']
 })
-export class TopicPageComponent  implements OnInit {
+export class TopicPageComponent implements OnInit {
   topic: Topic;
-  rating: number;
   messages: Observable<MessageSearch[]>;
-  newMessage: string;
+  newMessage: string ;
   constructor(private route: ActivatedRoute, private topicService: TopicService,
               private messageService: MessageService, private authService: AuthService) {
     this.topic = {
@@ -62,6 +61,11 @@ export class TopicPageComponent  implements OnInit {
   sendMessage(): void {
     this.messageService.create({topicId: this.topic.id, message: this.newMessage}).subscribe(() => {
       this.search(this.topic.id);
+      this.newMessage = '';
     });
+  }
+
+  isNewMessageEmpty(): boolean {
+    return this.newMessage === undefined || this.newMessage === '';
   }
 }
