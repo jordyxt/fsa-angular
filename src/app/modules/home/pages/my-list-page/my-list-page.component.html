@@ -15,12 +15,19 @@
       </button>
       <mat-card>
         <mat-card-content>
-          <mat-selection-list #videoProductionSelected [multiple]="false">
-            <mat-list-option *ngFor="let  videoProduction of videoProductions | async" [value]="videoProduction" [routerLink]="['/films', videoProduction.id]">
+          <mat-selection-list [multiple]="false">
+            <mat-list-option *ngFor="let  videoProduction of videoProductions | async" [value]="videoProduction"
+                             [routerLink]="videoProduction.videoProductionType==='FILM'?
+                             ['/films', videoProduction.id]:['/series', videoProduction.id]">
               <img src="{{videoProduction.poster}}" matListAvatar alt="">
-              <div matLine>{{ videoProduction.title }} ({{videoProduction.rating}}<mat-icon>star</mat-icon>)</div>
+              <div matLine>{{ videoProduction.title }} ({{videoProduction.rating}}
+                <mat-icon>star</mat-icon>
+                )
+              </div>
               <div matLine>({{ videoProduction.releaseYear }})</div>
-              <div matLine>My rating: {{ videoProduction.myRating }}<mat-icon>star</mat-icon></div>
+              <div matLine>My rating: {{ videoProduction.myRating }}
+                <mat-icon>star</mat-icon>
+              </div>
               <div matLine>
                 <mat-chip-list>
                   <mat-chip selected="true" color="accent"

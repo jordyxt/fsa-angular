@@ -7,6 +7,8 @@ import {SeriesSearchPageComponent} from './pages/series-search-page/series-searc
 import {FilmPageComponent} from './pages/film-page/film-page.component';
 import {SeriesPageComponent} from './pages/series-page/series-page.component';
 import {MyListPageComponent} from './pages/my-list-page/my-list-page.component';
+import {RoleGuardService} from '@core/guards/role.guard.service';
+import {Role} from '@core/models/role.model';
 
 const routes: Routes = [
   {
@@ -23,7 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'my-list',
-    component: MyListPageComponent
+    component: MyListPageComponent,
+    canActivate: [RoleGuardService],
+    data: {roles: [Role.ADMIN, Role.BASIC]}
   },
   {
     path: 'films/:id',

@@ -8,7 +8,6 @@ import {MatDialog} from '@angular/material/dialog';
 import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
 import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 import {AuthService} from '../../../auth/services/auth.service';
-import {VideoProductionService} from '../../../admin/services/video-production.service';
 
 @Component({
   selector: 'app-film-search-page',
@@ -73,9 +72,5 @@ export class FilmSearchPageComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.genres = this.genreFilter.genres;
     this.workers = this.workerFilter.workers;
-  }
-
-  onSelect(filmSelected): void {
-    console.log(filmSelected.selectedOptions.selected[0]?.value.id);
   }
 }
