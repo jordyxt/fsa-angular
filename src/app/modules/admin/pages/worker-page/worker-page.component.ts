@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {of} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {map} from 'rxjs/operators';
-import {GenreDialogComponent} from '../../dialogs/genre-dialog/genre-dialog.component';
 import {ReadDetailDialogComponent} from '@shared/dialogs/read-detail.dialog.component';
 import {Worker} from '../../models/worker.model';
 import {CancelYesDialogComponent} from '@shared/dialogs/cancel-yes-dialog.component';
@@ -19,9 +18,11 @@ export class WorkerPageComponent {
   workerSearch: WorkerFilter;
   title = 'Workers management';
   workers = of([]);
-  constructor( private dialog: MatDialog, private workerService: WorkerService) {
+
+  constructor(private dialog: MatDialog, private workerService: WorkerService) {
     this.resetSearch();
   }
+
   search(): void {
     this.workers = this.workerService.search(this.workerSearch).pipe(map(workers =>
       workers.map(worker => {
@@ -35,6 +36,7 @@ export class WorkerPageComponent {
       )
     ));
   }
+
   resetSearch(): void {
     this.workerSearch = {};
     this.search();

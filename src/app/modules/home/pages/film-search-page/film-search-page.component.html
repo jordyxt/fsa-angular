@@ -20,23 +20,24 @@
       </button>
       <mat-card>
         <mat-card-content>
-      <mat-selection-list  #filmSelected [multiple]="false">
-        <mat-list-option *ngFor="let  film of films | async" [value]="film" [routerLink]="['/films', film.id]" (click)="onSelect(filmSelected)">
-            <img src="{{film.poster}}" matListAvatar alt="">
-            <div matLine>{{ film.title }}</div>
-            <div matLine>({{ film.releaseYear }})</div>
-          <div matLine>
-            <mat-chip-list>
-              <mat-chip selected="true" color="accent"
-                *ngFor="let genre of film.genreList">
-                {{genre}}
-              </mat-chip>
-            </mat-chip-list>
-            </div>
-        </mat-list-option>
-      </mat-selection-list>
-    </mat-card-content>
-    </mat-card>
+          <mat-selection-list #filmSelected [multiple]="false">
+            <mat-list-option *ngFor="let  film of films | async" [value]="film" [routerLink]="['/films', film.id]"
+                             (click)="onSelect(filmSelected)">
+              <img src="{{film.poster}}" matListAvatar alt="">
+              <div matLine>{{ film.title }}</div>
+              <div matLine>({{ film.releaseYear }})</div>
+              <div matLine>
+                <mat-chip-list>
+                  <mat-chip selected="true" color="accent"
+                            *ngFor="let genre of film.genreList">
+                    {{genre}}
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </mat-list-option>
+          </mat-selection-list>
+        </mat-card-content>
+      </mat-card>
     </mat-card-content>
   </mat-card>
 </div>

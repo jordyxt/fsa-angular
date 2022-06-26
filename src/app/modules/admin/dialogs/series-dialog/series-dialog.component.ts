@@ -1,7 +1,5 @@
 import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {FilmService} from '../../services/film.service';
-import {Film} from '../../models/film.model';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {SeriesService} from '../../services/series.service';
 import {Series} from '../../models/series.model';
@@ -11,7 +9,7 @@ import {Series} from '../../models/series.model';
   templateUrl: './series-dialog.component.html',
   styleUrls: ['./series-dialog.component.css']
 })
-export class SeriesDialogComponent implements AfterViewInit  {
+export class SeriesDialogComponent implements AfterViewInit {
 
   series: Series;
   title: string;
@@ -21,6 +19,7 @@ export class SeriesDialogComponent implements AfterViewInit  {
   @ViewChild(GenreFilterComponent) genreFilter;
   @ViewChild('directorFilter') directorFilter;
   @ViewChild('actorFilter') actorFilter;
+
   constructor(@Inject(MAT_DIALOG_DATA) data: Series, private seriesService: SeriesService, private dialog: MatDialog) {
     this.title = data ? 'Update series' : 'Create series';
     this.releaseDate = undefined;
@@ -44,19 +43,22 @@ export class SeriesDialogComponent implements AfterViewInit  {
   check(attr: string): boolean {
     return attr === undefined || null || attr === '';
   }
+
   invalid(): boolean {
     this.series.releaseDate = this.getDateString(this.releaseDate);
     this.series.endingDate = this.getDateString(this.endingDate);
     return this.check(this.series.title) || this.check(this.series.description) ||
-              this.check(this.series.releaseDate) || this.check(this.series.endingDate);
+      this.check(this.series.releaseDate) || this.check(this.series.endingDate);
   }
-  getDateString(dateString: Date): string{
+
+  getDateString(dateString: Date): string {
     return dateString ? (dateString.getFullYear() +
       '-' + (((dateString.getMonth()) < 9) ?
         ('0' + (dateString.getMonth() + 1)) : (dateString.getMonth() + 1)) +
       '-' + ((dateString.getDate() < 9) ?
         ('0' + dateString.getDate()) : dateString.getDate())) : undefined;
   }
+
   onFileSelected(event): void {
     const inputNode = event.target;
 
@@ -70,6 +72,7 @@ export class SeriesDialogComponent implements AfterViewInit  {
       reader.readAsDataURL(inputNode.files[0]);
     }
   }
+
   ngAfterViewInit(): void {
     this.series.genreList = this.genreFilter.genres;
     this.series.directorList = this.directorFilter.workers;

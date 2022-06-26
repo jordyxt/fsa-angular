@@ -1,19 +1,9 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
-import {FilmFilter} from '@shared/models/film-filter.model';
-import {Observable, of} from 'rxjs';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {MatDialog} from '@angular/material/dialog';
-import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
-import {TopicFilter} from '../../models/topic-filter.model';
 import {TopicService} from '../../../admin/services/topic.service';
-import {TopicDialogComponent} from '../../dialogs/topic-dialog/topic-dialog.component';
-import {TopicSearch} from '../../models/topic-search.model';
 import {AuthService} from '../../../auth/services/auth.service';
-import {Film} from '../../../admin/models/film.model';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
-import {FilmService} from '../../../admin/services/film.service';
-import {RatingService} from '../../../admin/services/rating.service';
 import {Topic} from '../../../admin/models/topic.model';
 import {MessageService} from '../../../admin/services/message.service';
 import {MessageSearch} from '../../models/message-search.model';
@@ -26,7 +16,8 @@ import {MessageSearch} from '../../models/message-search.model';
 export class TopicPageComponent implements OnInit {
   topic: Topic;
   messages: Observable<MessageSearch[]>;
-  newMessage: string ;
+  newMessage: string;
+
   constructor(private route: ActivatedRoute, private topicService: TopicService,
               private messageService: MessageService, private authService: AuthService) {
     this.topic = {
@@ -43,6 +34,7 @@ export class TopicPageComponent implements OnInit {
       this.search(params.id);
     });
   }
+
   search(id: number): void {
     this.messages = this.messageService.search({topicId: id}).pipe(map(messages =>
       messages.map(message => {
@@ -55,9 +47,11 @@ export class TopicPageComponent implements OnInit {
       )
     ));
   }
+
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
+
   sendMessage(): void {
     this.messageService.create({topicId: this.topic.id, message: this.newMessage}).subscribe(() => {
       this.search(this.topic.id);

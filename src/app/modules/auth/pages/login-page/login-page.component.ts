@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 
@@ -10,7 +10,8 @@ import {AuthService} from '../../services/auth.service';
 export class LoginPageComponent {
   username: string;
   password: string;
-  constructor(  private auth: AuthService, private router: Router) {
+
+  constructor(private auth: AuthService, private router: Router) {
   }
 
   login(): void {

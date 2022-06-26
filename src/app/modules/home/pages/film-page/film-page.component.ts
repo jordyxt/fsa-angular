@@ -16,6 +16,7 @@ export class FilmPageComponent implements OnInit {
   mobile: boolean;
   trailer: SafeResourceUrl;
   rating: number;
+
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer, private filmService: FilmService,
               private ratingService: RatingService, private authService: AuthService) {
     this.film = {
@@ -34,21 +35,24 @@ export class FilmPageComponent implements OnInit {
       this.filmService.read(params.id).subscribe(value => {
         this.film = value;
         this.film.poster = this.filmService.pictures(params.id);
-        if (value.trailer){
+        if (value.trailer) {
           this.trailer = this.sanitizer.bypassSecurityTrustResourceUrl(value.trailer);
         }
       });
-      if (this.isAuthenticated()){
+      if (this.isAuthenticated()) {
         this.ratingService.read(params.id).subscribe(value => {
           this.rating = value;
         });
       }
     });
   }
+
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
   }
+
   sendRating(event): void {
-    this.ratingService.create({videoProductionId: this.film.id, rating: event.value}).subscribe(() => {});
+    this.ratingService.create({videoProductionId: this.film.id, rating: event.value}).subscribe(() => {
+    });
   }
 }

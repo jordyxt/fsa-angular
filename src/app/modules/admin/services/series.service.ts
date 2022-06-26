@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 
 import {HttpService} from '@core/services/http.service';
 import {SeriesSearch} from '../../home/models/series-search.model';
@@ -16,10 +16,12 @@ export class SeriesService {
 
   constructor(private httpService: HttpService) {
   }
+
   create(series: Series): Observable<Series> {
     return this.httpService
       .post(EndPoints.SERIES, series);
   }
+
   read(id: number): Observable<Series> {
     return this.httpService
       .get(EndPoints.SERIES + '/' + id);
@@ -30,6 +32,7 @@ export class SeriesService {
       .paramsFrom(filmSearch)
       .get(EndPoints.SERIES + SeriesService.SEARCH);
   }
+
   pictures(id: number): string {
     return EndPoints.SERIES + SeriesService.PICTURES + '/' + id;
   }

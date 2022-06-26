@@ -1,11 +1,10 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {WorkerService} from '../../modules/admin/services/worker.service';
 import {VideoProductionService} from '../../modules/admin/services/video-production.service';
 
 @Component({
@@ -20,6 +19,7 @@ export class VideoProductionFilterComponent {
   videoProductions: string[] = [];
   allVideoProductions: Observable<string[]> = of([]);
   @ViewChild('videoProductionInput') videoProductionInput: ElementRef<HTMLInputElement>;
+
   constructor(private videoProductionService: VideoProductionService) {
     this.allVideoProductions = this.videoProductionService.search({}).
     pipe(map(videoProductions => videoProductions.map(videoProduction => videoProduction.title)));
@@ -57,8 +57,9 @@ export class VideoProductionFilterComponent {
       this.videoProductions.splice(index, 1);
     }
   }
+
   selected(event: MatAutocompleteSelectedEvent): void {
-    if (!this.videoProductions.includes(event.option.viewValue)){
+    if (!this.videoProductions.includes(event.option.viewValue)) {
       this.videoProductions.splice(0);
       this.videoProductions.push(event.option.viewValue);
     }

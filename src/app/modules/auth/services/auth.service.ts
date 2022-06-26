@@ -70,15 +70,15 @@ export class AuthService {
     return this.user ? this.user.token : undefined;
   }
 
-  getRole(): Role{
-    return this.user  ? this.user.role : undefined;
+  getRole(): Role {
+    return this.user ? this.user.role : undefined;
   }
 
-  getPassword(): string{
+  getPassword(): string {
     return this.user ? this.password : undefined;
   }
 
-  setUser(user: User): void{
+  setUser(user: User): void {
     this.user = user;
   }
 

@@ -1,12 +1,11 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {Observable, of} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {GenreService} from '../../modules/admin/services/genre.service';
-import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-genre-filter',
@@ -20,11 +19,11 @@ export class GenreFilterComponent {
   genres: string[] = [];
   allGenres: Observable<string[]> = of([]);
   @ViewChild('genreInput') genreInput: ElementRef<HTMLInputElement>;
+
   constructor(private genreService: GenreService) {
     this.allGenres = this.genreService.search({}).pipe(map(genres => genres.map(genre => genre.name)));
     this.genreCtrl.valueChanges.subscribe(value => {
-      this.filteredGenres = value ? this.genreService.search({name: value}).
-      pipe(map(genres => genres.map(genre => genre.name))) : of([]);
+      this.filteredGenres = value ? this.genreService.search({name: value}).pipe(map(genres => genres.map(genre => genre.name))) : of([]);
     });
   }
 
@@ -55,8 +54,9 @@ export class GenreFilterComponent {
       this.genres.splice(index, 1);
     }
   }
+
   selected(event: MatAutocompleteSelectedEvent): void {
-    if (!this.genres.includes(event.option.viewValue)){
+    if (!this.genres.includes(event.option.viewValue)) {
       this.genres.push(event.option.viewValue);
     }
     this.genreInput.nativeElement.value = '';

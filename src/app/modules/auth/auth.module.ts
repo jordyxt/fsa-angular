@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing.module';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import {FormsModule } from '@angular/forms';
-import { MaterialModule } from '@shared/material.module';
+import {AuthRoutingModule} from './auth-routing.module';
+import {RegisterPageComponent} from './pages/register-page/register-page.component';
+import {FormsModule} from '@angular/forms';
+import {MaterialModule} from '@shared/material.module';
 import {HttpService} from '@core/services/http.service';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import {LoginPageComponent} from './pages/login-page/login-page.component';
 import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
@@ -23,4 +23,5 @@ import {SharedModule} from '@shared/shared.module';
   ],
   providers: [HttpService]
 })
-export class AuthModule { }
+export class AuthModule {
+}

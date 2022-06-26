@@ -36,6 +36,7 @@ export class GenreService {
       .paramsFrom(genreSearch)
       .get(EndPoints.GENRES + GenreService.SEARCH);
   }
+
   delete(name: string): Observable<Genre> {
     return this.httpService
       .successful()

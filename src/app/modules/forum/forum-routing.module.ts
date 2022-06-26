@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {ForumPageComponent} from './pages/forum-page/forum-page.component';
 import {TopicPageComponent} from './pages/topic-page/topic-page.component';
 
@@ -19,4 +19,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ForumRoutingModule { }
+export class ForumRoutingModule {
+}
