@@ -43,6 +43,7 @@ export class SeriesSearchPageComponent implements AfterViewInit {
             releaseYear: series.releaseYear,
             endingYear: series.endingYear,
             genreList: series.genreList,
+            rating: series.rating,
             poster: this.seriesService.pictures(series.id)
           };
         }

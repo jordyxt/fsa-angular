@@ -5,4 +5,5 @@ export interface SeriesSearch {
   releaseYear: string;
   endingYear: string;
   genreList: string[];
+  rating: number;
 }

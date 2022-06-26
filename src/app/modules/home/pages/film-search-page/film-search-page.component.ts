@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialog.component';
 import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 import {AuthService} from '../../../auth/services/auth.service';
+import {VideoProductionService} from '../../../admin/services/video-production.service';
 
 @Component({
   selector: 'app-film-search-page',
@@ -44,6 +45,7 @@ export class FilmSearchPageComponent implements AfterViewInit {
             description: film.description,
             releaseYear: film.releaseYear,
             genreList: film.genreList,
+            rating: film.rating,
             poster: this.filmService.pictures(film.id)
           };
         }
