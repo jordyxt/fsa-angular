@@ -19,7 +19,7 @@
       <mat-card>
         <mat-card-content>
           <mat-selection-list [multiple]="false">
-            <mat-list-option *ngFor="let  topic of topics | async" [value]="topic" [routerLink]="['/forum', topic.id]">
+            <mat-list-option *ngFor="let  topic of topics | async" [value]="topic" [routerLink]="['/forum/topics', topic.id]">
               <div matLine>{{ topic.title }}</div>
               <div matLine>By {{topic.username}} on  {{ topic.creationDate }}</div>
               <div matLine>

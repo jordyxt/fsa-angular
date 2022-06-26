@@ -4,11 +4,11 @@ import {Observable, of} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
-import {TopicFilter} from '../models/topic-filter.model';
-import {TopicService} from '../../admin/services/topic.service';
-import {TopicDialogComponent} from '../dialogs/topic-dialog/topic-dialog.component';
-import {TopicSearch} from '../models/topic-search.model';
-import {AuthService} from '../../auth/services/auth.service';
+import {TopicFilter} from '../../models/topic-filter.model';
+import {TopicService} from '../../../admin/services/topic.service';
+import {TopicDialogComponent} from '../../dialogs/topic-dialog/topic-dialog.component';
+import {TopicSearch} from '../../models/topic-search.model';
+import {AuthService} from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-forum-page',
