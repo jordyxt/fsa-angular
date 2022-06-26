@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 
 import {HttpService} from '@core/services/http.service';
-import {FilmSearch} from '../../home/models/film-search.model';
-import {FilmFilter} from '@shared/models/film-filter.model';
 import {EndPoints} from '@shared/end-points';
 import {Topic} from '../models/topic.model';
 import {TopicFilter} from '../../forum/models/topic-filter.model';

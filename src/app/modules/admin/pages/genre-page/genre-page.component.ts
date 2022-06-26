@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {GenreFilter} from '@shared/models/genre-filter.model';
 import {of} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,9 +18,11 @@ export class GenrePageComponent {
   genreSearch: GenreFilter;
   title = 'Genres management';
   genres = of([]);
-  constructor( private dialog: MatDialog, private genreService: GenreService) {
+
+  constructor(private dialog: MatDialog, private genreService: GenreService) {
     this.resetSearch();
   }
+
   search(): void {
     this.genres = this.genreService.search(this.genreSearch).pipe(map(genres =>
       genres.map(genre => {
@@ -32,6 +34,7 @@ export class GenrePageComponent {
       )
     ));
   }
+
   resetSearch(): void {
     this.genreSearch = {};
     this.search();

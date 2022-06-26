@@ -36,6 +36,7 @@ export class WorkerService {
       .paramsFrom(workerSearch)
       .get(EndPoints.WORKERS + WorkerService.SEARCH);
   }
+
   delete(id: number): Observable<Worker> {
     return this.httpService
       .successful()

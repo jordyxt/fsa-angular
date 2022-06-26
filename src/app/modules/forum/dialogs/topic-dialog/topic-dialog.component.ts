@@ -1,7 +1,5 @@
-import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
-import {GenreFilterComponent} from '@shared/components/genre-filter.component';
-import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 import {TopicService} from '../../../admin/services/topic.service';
 import {Topic} from '../../../admin/models/topic.model';
 import {VideoProductionFilterComponent} from '@shared/components/video-production-filter.component';
@@ -11,11 +9,12 @@ import {VideoProductionFilterComponent} from '@shared/components/video-productio
   templateUrl: './topic-dialog.component.html',
   styleUrls: ['./topic-dialog.component.css']
 })
-export class TopicDialogComponent  {
+export class TopicDialogComponent {
   topic: Topic;
   title: string;
   id: number;
   @ViewChild('videoProductionFilter') videoProductionFilter: VideoProductionFilterComponent;
+
   constructor(@Inject(MAT_DIALOG_DATA) data: Topic, private topicService: TopicService, private dialog: MatDialog) {
     this.title = data ? 'Update topic' : 'Create topic';
     this.topic = data ? data : {
@@ -38,6 +37,7 @@ export class TopicDialogComponent  {
   check(attr: string): boolean {
     return attr === undefined || null || attr === '';
   }
+
   invalid(): boolean {
     return this.check(this.topic.title) || this.check(this.topic.description);
   }

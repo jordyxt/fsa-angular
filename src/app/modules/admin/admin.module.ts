@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AdminRoutingModule } from './admin-routing.module';
-import {FormsModule } from '@angular/forms';
-import { MaterialModule } from '@shared/material.module';
+import {AdminRoutingModule} from './admin-routing.module';
+import {FormsModule} from '@angular/forms';
+import {MaterialModule} from '@shared/material.module';
 import {HttpService} from '@core/services/http.service';
 import {GenrePageComponent} from './pages/genre-page/genre-page.component';
 import {GenreDialogComponent} from './dialogs/genre-dialog/genre-dialog.component';
@@ -31,4 +31,5 @@ import {WorkerPageComponent} from './pages/worker-page/worker-page.component';
   ],
   providers: [HttpService]
 })
-export class AdminModule { }
+export class AdminModule {
+}

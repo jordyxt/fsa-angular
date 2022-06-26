@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {GenrePageComponent} from './pages/genre-page/genre-page.component';
 import {WorkerPageComponent} from './pages/worker-page/worker-page.component';
 import {RoleGuardService} from '@core/guards/role.guard.service';
@@ -25,4 +25,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {
+}

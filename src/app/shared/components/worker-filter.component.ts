@@ -1,5 +1,5 @@
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {ChangeDetectorRef, Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {MatChipInputEvent} from '@angular/material/chips';
@@ -19,6 +19,7 @@ export class WorkerFilterComponent {
   workers: string[] = [];
   allWorkers: Observable<string[]> = of([]);
   @ViewChild('workerInput') workerInput: ElementRef<HTMLInputElement>;
+
   constructor(private workerService: WorkerService) {
     this.allWorkers = this.workerService.search({}).pipe(map(workers => workers.map(worker => worker.name)));
     this.workerCtrl.valueChanges.subscribe(value => {
@@ -54,8 +55,9 @@ export class WorkerFilterComponent {
       this.workers.splice(index, 1);
     }
   }
+
   selected(event: MatAutocompleteSelectedEvent): void {
-    if (!this.workers.includes(event.option.viewValue)){
+    if (!this.workers.includes(event.option.viewValue)) {
       this.workers.push(event.option.viewValue);
     }
     this.workerInput.nativeElement.value = '';

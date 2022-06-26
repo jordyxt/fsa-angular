@@ -11,9 +11,12 @@
         </mat-chip-list>
       </mat-card-subtitle>
       <mat-card-subtitle>
-          <p class="mat-body-2">Rating:</p>
+        <p class="mat-body-2">Rating:</p>
         <div>
-          {{film.rating}}<mat-icon>star</mat-icon>/10<mat-icon>star</mat-icon>
+          {{film.rating}}
+          <mat-icon>star</mat-icon>
+          /10
+          <mat-icon>star</mat-icon>
         </div>
       </mat-card-subtitle>
       <mat-card-subtitle>
@@ -46,19 +49,19 @@
       </mat-card-subtitle>
       <div *ngIf="!mobile">
         <mat-card>
-          <img  src="{{film.poster}}" width="250px" height="400px">
+          <img src="{{film.poster}}" width="250px" height="400px">
         </mat-card>
       </div>
     </mat-card-title-group>
     <div *ngIf="isAuthenticated()">
       <p class="mat-body-2">Rate your film:</p>
       <span *ngIf="rating!=undefined">{{rating}} of 10</span>
-      <ngx-material-rating [dense]="true" color="warn"  [(ngModel)]="rating" [max]="10" (change)="sendRating($event)">
+      <ngx-material-rating [dense]="true" color="warn" [(ngModel)]="rating" [max]="10" (change)="sendRating($event)">
       </ngx-material-rating>
     </div>
     <div *ngIf="mobile">
       <mat-card>
-        <img  src="{{film.poster}}" width="250px" height="400px">
+        <img src="{{film.poster}}" width="250px" height="400px">
       </mat-card>
     </div>
     <p class="mat-body-2">Video:</p>

@@ -3,14 +3,13 @@ import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {FilmService} from '../../services/film.service';
 import {Film} from '../../models/film.model';
 import {GenreFilterComponent} from '@shared/components/genre-filter.component';
-import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
 
 @Component({
   selector: 'app-film-dialog',
   templateUrl: './film-dialog.component.html',
   styleUrls: ['./film-dialog.component.css']
 })
-export class FilmDialogComponent implements AfterViewInit  {
+export class FilmDialogComponent implements AfterViewInit {
 
   film: Film;
   title: string;
@@ -19,6 +18,7 @@ export class FilmDialogComponent implements AfterViewInit  {
   @ViewChild(GenreFilterComponent) genreFilter;
   @ViewChild('directorFilter') directorFilter;
   @ViewChild('actorFilter') actorFilter;
+
   constructor(@Inject(MAT_DIALOG_DATA) data: Film, private filmService: FilmService, private dialog: MatDialog) {
     this.title = data ? 'Update film' : 'Create Film';
     this.releaseDate = undefined;
@@ -42,15 +42,17 @@ export class FilmDialogComponent implements AfterViewInit  {
   check(attr: string): boolean {
     return attr === undefined || null || attr === '';
   }
+
   invalid(): boolean {
     this.film.releaseDate = this.releaseDate ?
       (this.releaseDate.getFullYear() +
         '-' + (((this.releaseDate.getMonth()) < 9) ?
-        ('0' + (this.releaseDate.getMonth() + 1)) : (this.releaseDate.getMonth() + 1)) +
+          ('0' + (this.releaseDate.getMonth() + 1)) : (this.releaseDate.getMonth() + 1)) +
         '-' + ((this.releaseDate.getDate() < 9) ?
           ('0' + this.releaseDate.getDate()) : this.releaseDate.getDate())) : undefined;
     return this.check(this.film.title) || this.check(this.film.description) || this.check(this.film.releaseDate);
   }
+
   onFileSelected(event): void {
     const inputNode = event.target;
 
@@ -64,6 +66,7 @@ export class FilmDialogComponent implements AfterViewInit  {
       reader.readAsDataURL(inputNode.files[0]);
     }
   }
+
   ngAfterViewInit(): void {
     this.film.genreList = this.genreFilter.genres;
     this.film.directorList = this.directorFilter.workers;

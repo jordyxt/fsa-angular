@@ -1,34 +1,34 @@
 <app-menu></app-menu>
 <div class="container">
-<mat-card>
-  <mat-card-title>{{topic.title}}</mat-card-title>
-  <mat-card-subtitle>
-    <mat-chip-list>
-  <mat-chip>
-    {{topic.videoProductionTitle}}
-  </mat-chip>
-    </mat-chip-list>
-  </mat-card-subtitle>
-<mat-card-content>
-  {{topic.description}}
-  <p align="end">By {{topic.username}} on {{topic.creationDate}}</p>
-</mat-card-content>
-</mat-card>
-<br>
-<div *ngFor="let message of messages  | async">
   <mat-card>
-    <mat-card-subtitle>{{message.username}}:</mat-card-subtitle>
-    <mat-card-content>{{message.message}}
-      <p align="end">{{message.creationDate}}</p>
+    <mat-card-title>{{topic.title}}</mat-card-title>
+    <mat-card-subtitle>
+      <mat-chip-list>
+        <mat-chip>
+          {{topic.videoProductionTitle}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card-subtitle>
+    <mat-card-content>
+      {{topic.description}}
+      <p align="end">By {{topic.username}} on {{topic.creationDate}}</p>
     </mat-card-content>
   </mat-card>
   <br>
-</div>
+  <div *ngFor="let message of messages  | async">
+    <mat-card>
+      <mat-card-subtitle>{{message.username}}:</mat-card-subtitle>
+      <mat-card-content>{{message.message}}
+        <p align="end">{{message.creationDate}}</p>
+      </mat-card-content>
+    </mat-card>
+    <br>
+  </div>
   <mat-card *ngIf="isAuthenticated()">
-  <mat-form-field class="full-width">
-    <mat-label>Message</mat-label>
-    <textarea [(ngModel)]="newMessage" matInput type="text" [rows]="5"></textarea>
-  </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Message</mat-label>
+      <textarea [(ngModel)]="newMessage" matInput type="text" [rows]="5"></textarea>
+    </mat-form-field>
     <mat-card-actions align="end">
       <button mat-button (click)="sendMessage()" [disabled]="isNewMessageEmpty()">Send</button>
     </mat-card-actions>

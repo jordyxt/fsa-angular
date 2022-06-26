@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {from, Observable, of} from 'rxjs';
+import {Observable} from 'rxjs';
 
 import {HttpService} from '@core/services/http.service';
 import {EndPoints} from '@shared/end-points';
@@ -21,6 +21,7 @@ export class MessageService {
       .paramsFrom(messageFilter)
       .get(EndPoints.MESSAGES + MessageService.SEARCH);
   }
+
   create(message: Message): Observable<void> {
     return this.httpService
       .post(EndPoints.MESSAGES, message);

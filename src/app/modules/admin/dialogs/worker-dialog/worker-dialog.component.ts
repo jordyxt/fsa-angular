@@ -1,9 +1,7 @@
 import {AfterViewInit, Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import {Worker} from '../../models/worker.model';
-import {GenreService} from '../../services/genre.service';
 import {WorkerService} from '../../services/worker.service';
-import {GenreFilterComponent} from '@shared/components/genre-filter.component';
 import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.component';
 
 @Component({
@@ -11,15 +9,16 @@ import {WorkerRoleFilterComponent} from '@shared/components/worker-role-filter.c
   templateUrl: './worker-dialog.component.html',
   styleUrls: ['./worker-dialog.component.css']
 })
-export class WorkerDialogComponent implements AfterViewInit  {
+export class WorkerDialogComponent implements AfterViewInit {
   worker: Worker;
   title: string;
   id: number;
   birthdate: Date;
   @ViewChild(WorkerRoleFilterComponent) workerRoleFilter;
+
   constructor(@Inject(MAT_DIALOG_DATA) data: Worker, private workerService: WorkerService, private dialog: MatDialog) {
     this.title = data ? 'Update Worker' : 'Create Worker';
-    this.worker = data   ? data : {
+    this.worker = data ? data : {
       name: undefined, description: undefined, birthdate: undefined, videoProductionWorkerRoleList: []
     };
     this.id = data ? data.id : undefined;

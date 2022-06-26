@@ -1,10 +1,10 @@
 <mat-toolbar color="primary">
   <button mat-button routerLink="/home">
-    <img class="img-ico" alt="fsa" src="assets/video.png" />
+    <img class="img-ico" alt="fsa" src="assets/video.png"/>
     <span> FSA</span>
   </button>
   <div>
-    <button  routerLink="/forum" mat-button>Forum</button>
+    <button routerLink="/forum" mat-button>Forum</button>
     <button [matMenuTriggerFor]="adminManagement" mat-button *ngIf="isAdmin()">Admin</button>
     <mat-menu #adminManagement="matMenu">
       <button mat-menu-item routerLink="/admin/genres" *ngIf="isAdmin()">
@@ -14,7 +14,9 @@
         <mat-icon>settings_suggest-outlined</mat-icon>
         <span>Workers Management</span></button>
     </mat-menu>
-    <button [matMenuTriggerFor]="userManagement" mat-button><mat-icon>person_outline</mat-icon></button>
+    <button [matMenuTriggerFor]="userManagement" mat-button>
+      <mat-icon>person_outline</mat-icon>
+    </button>
     <mat-menu #userManagement="matMenu">
       <button mat-menu-item routerLink="/auth/login" *ngIf="!isAuthenticated()">
         <mat-icon>person_outline</mat-icon>
