@@ -48,7 +48,7 @@ export class FilmDialogComponent implements AfterViewInit {
       (this.releaseDate.getFullYear() +
         '-' + (((this.releaseDate.getMonth()) < 9) ?
           ('0' + (this.releaseDate.getMonth() + 1)) : (this.releaseDate.getMonth() + 1)) +
-        '-' + ((this.releaseDate.getDate() < 9) ?
+        '-' + ((this.releaseDate.getDate() < 10) ?
           ('0' + this.releaseDate.getDate()) : this.releaseDate.getDate())) : undefined;
     return this.check(this.film.title) || this.check(this.film.description) || this.check(this.film.releaseDate);
   }
