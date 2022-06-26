@@ -50,7 +50,7 @@ export class WorkerDialogComponent implements AfterViewInit  {
   invalid(): boolean {
     this.worker.birthdate = this.birthdate ?
       (this.birthdate.getFullYear() +
-        '-' + (((this.birthdate.getMonth() + 1) < 9) ?
+        '-' + (((this.birthdate.getMonth()) < 9) ?
           ('0' + (this.birthdate.getMonth() + 1)) : (this.birthdate.getMonth() + 1)) +
         '-' + ((this.birthdate.getDate() < 9) ?
           ('0' + this.birthdate.getDate()) : this.birthdate.getDate())) : undefined;

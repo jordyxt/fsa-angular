@@ -8,6 +8,8 @@ import {FilmDialogComponent} from '../../../admin/dialogs/film-dialog/film-dialo
 import {SeriesDialogComponent} from '../../../admin/dialogs/series-dialog/series-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import {WorkerFilterComponent} from '@shared/components/worker-filter.component';
+import {FilmService} from '../../../admin/services/film.service';
+import {AuthService} from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-series-search-page',
@@ -22,7 +24,7 @@ export class SeriesSearchPageComponent implements AfterViewInit {
   workers: string[] = [];
   @ViewChild(GenreFilterComponent) genreFilter;
   @ViewChild(WorkerFilterComponent) workerFilter;
-  constructor(private dialog: MatDialog, private seriesService: SeriesService) {
+  constructor(private dialog: MatDialog, private seriesService: SeriesService, private authService: AuthService) {
     this.resetSearch();
   }
   search(): void {
@@ -32,7 +34,6 @@ export class SeriesSearchPageComponent implements AfterViewInit {
     if (this.workers.length !== 0){
       this.seriesSearch.workerList = this.workers;
     }
-    console.log(this.seriesSearch);
     this.seriesList = this.seriesService.search(this.seriesSearch).pipe(map(seriesList =>
       seriesList.map(series => {
         return {
@@ -52,6 +53,9 @@ export class SeriesSearchPageComponent implements AfterViewInit {
     this.dialog.open(SeriesDialogComponent, { disableClose: true }).afterClosed().subscribe(() =>
       this.search()
     );
+  }
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
   }
   resetSearch(): void {
     this.seriesSearch = {};
