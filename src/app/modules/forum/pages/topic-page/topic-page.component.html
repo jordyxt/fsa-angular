@@ -15,30 +15,22 @@
 </mat-card-content>
 </mat-card>
 <br>
-<mat-card>
-  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
-  <mat-card-content>{{topic.description}}
-    <p align="end">{{topic.creationDate}}</p>
-  </mat-card-content>
-</mat-card>
-  <br>
-<mat-card>
-  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
-  <mat-card-content>{{topic.description}}</mat-card-content>
-</mat-card>
-  <br>
-<mat-card>
-  <mat-card-subtitle>{{topic.username}}:</mat-card-subtitle>
-  <mat-card-content>{{topic.description}}</mat-card-content>
-</mat-card>
-  <br>
+<div *ngFor="let message of messages  | async">
   <mat-card>
+    <mat-card-subtitle>{{message.username}}:</mat-card-subtitle>
+    <mat-card-content>{{message.message}}
+      <p align="end">{{message.creationDate}}</p>
+    </mat-card-content>
+  </mat-card>
+  <br>
+</div>
+  <mat-card *ngIf="isAuthenticated()">
   <mat-form-field class="full-width">
     <mat-label>Message</mat-label>
-    <textarea [(ngModel)]="newMessage" matInput required type="text" [rows]="5"></textarea>
+    <textarea [(ngModel)]="newMessage" matInput type="text" [rows]="5"></textarea>
   </mat-form-field>
     <mat-card-actions align="end">
-      <button mat-button (click)="sendMessage()">Send</button>
+      <button mat-button (click)="sendMessage()" [disabled]="isNewMessageEmpty()">Send</button>
     </mat-card-actions>
   </mat-card>
 </div>
