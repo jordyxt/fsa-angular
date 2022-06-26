@@ -6,6 +6,7 @@ import {FilmSearchPageComponent} from './pages/film-search-page/film-search-page
 import {SeriesSearchPageComponent} from './pages/series-search-page/series-search-page.component';
 import {FilmPageComponent} from './pages/film-page/film-page.component';
 import {SeriesPageComponent} from './pages/series-page/series-page.component';
+import {MyListPageComponent} from './pages/my-list-page/my-list-page.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'series',
     component: SeriesSearchPageComponent
+  },
+  {
+    path: 'my-list',
+    component: MyListPageComponent
   },
   {
     path: 'films/:id',

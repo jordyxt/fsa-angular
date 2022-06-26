@@ -24,7 +24,7 @@
             <mat-list-option *ngFor="let  series of seriesList | async" [value]="series"
                              [routerLink]="['/series', series.id]">
               <img src="{{series.poster}}" matListAvatar alt="">
-              <div matLine>{{ series.title }}</div>
+              <div matLine>{{ series.title }} ({{series.rating}}<mat-icon>star</mat-icon>)</div>
               <div matLine>({{ series.releaseYear }} - {{series.endingYear}})</div>
               <div matLine>
                 <mat-chip-list>

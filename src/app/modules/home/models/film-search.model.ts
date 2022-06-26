@@ -4,4 +4,5 @@ export interface FilmSearch {
   description: string;
   releaseYear: string;
   genreList: string[];
+  rating: number;
 }

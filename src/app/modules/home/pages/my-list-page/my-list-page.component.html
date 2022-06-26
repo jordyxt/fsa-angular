@@ -5,31 +5,26 @@
     <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input [(ngModel)]="filmSearch.title" matInput>
+        <input [(ngModel)]="videoProductionMyListSearch.title" matInput>
       </mat-form-field>
-      <app-genre-filter #genreFilter></app-genre-filter>
-      <app-worker-filter #workerFilter></app-worker-filter>
       <button (click)="search()" mat-icon-button>
         <mat-icon>search</mat-icon>
       </button>
       <button (click)="resetSearch()" mat-icon-button>
         <mat-icon>close</mat-icon>
       </button>
-      <button (click)="create()" *ngIf="isAdmin()" mat-icon-button>
-        <mat-icon>add</mat-icon>
-      </button>
       <mat-card>
         <mat-card-content>
-          <mat-selection-list #filmSelected [multiple]="false">
-            <mat-list-option *ngFor="let  film of films | async" [value]="film" [routerLink]="['/films', film.id]"
-                             (click)="onSelect(filmSelected)">
-              <img src="{{film.poster}}" matListAvatar alt="">
-              <div matLine>{{ film.title }} ({{film.rating}}<mat-icon>star</mat-icon>)</div>
-              <div matLine>({{ film.releaseYear }})</div>
+          <mat-selection-list #videoProductionSelected [multiple]="false">
+            <mat-list-option *ngFor="let  videoProduction of videoProductions | async" [value]="videoProduction" [routerLink]="['/films', videoProduction.id]">
+              <img src="{{videoProduction.poster}}" matListAvatar alt="">
+              <div matLine>{{ videoProduction.title }} ({{videoProduction.rating}}<mat-icon>star</mat-icon>)</div>
+              <div matLine>({{ videoProduction.releaseYear }})</div>
+              <div matLine>My rating: {{ videoProduction.myRating }}<mat-icon>star</mat-icon></div>
               <div matLine>
                 <mat-chip-list>
                   <mat-chip selected="true" color="accent"
-                            *ngFor="let genre of film.genreList">
+                            *ngFor="let genre of videoProduction.genreList">
                     {{genre}}
                   </mat-chip>
                 </mat-chip-list>

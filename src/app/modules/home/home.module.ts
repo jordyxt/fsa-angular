@@ -7,6 +7,7 @@ import {FilmSearchPageComponent} from './pages/film-search-page/film-search-page
 import {SeriesSearchPageComponent} from './pages/series-search-page/series-search-page.component';
 import {FilmPageComponent} from './pages/film-page/film-page.component';
 import {SeriesPageComponent} from './pages/series-page/series-page.component';
+import {MyListPageComponent} from './pages/my-list-page/my-list-page.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import {SeriesPageComponent} from './pages/series-page/series-page.component';
     FilmSearchPageComponent,
     SeriesSearchPageComponent,
     FilmPageComponent,
-    SeriesPageComponent
+    SeriesPageComponent,
+    MyListPageComponent
   ],
   entryComponents: [],
   imports: [
