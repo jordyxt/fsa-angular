@@ -15,7 +15,7 @@
       <button (click)="resetSearch()" mat-icon-button>
         <mat-icon>close</mat-icon>
       </button>
-      <button (click)="create()" mat-icon-button>
+      <button (click)="create()" *ngIf="isAdmin()" mat-icon-button>
         <mat-icon>add</mat-icon>
       </button>
       <mat-card>

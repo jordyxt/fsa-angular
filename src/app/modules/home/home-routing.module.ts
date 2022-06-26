@@ -9,7 +9,7 @@ import {SeriesPageComponent} from './pages/series-page/series-page.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
