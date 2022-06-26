@@ -51,7 +51,7 @@ export class WorkerDialogComponent implements AfterViewInit {
       (this.birthdate.getFullYear() +
         '-' + (((this.birthdate.getMonth()) < 9) ?
           ('0' + (this.birthdate.getMonth() + 1)) : (this.birthdate.getMonth() + 1)) +
-        '-' + ((this.birthdate.getDate() < 9) ?
+        '-' + ((this.birthdate.getDate() < 10) ?
           ('0' + this.birthdate.getDate()) : this.birthdate.getDate())) : undefined;
     return this.check(this.worker.name) || this.check(this.worker.description) || this.check(this.worker.birthdate);
   }

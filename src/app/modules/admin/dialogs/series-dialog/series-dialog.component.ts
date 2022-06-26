@@ -55,7 +55,7 @@ export class SeriesDialogComponent implements AfterViewInit {
     return dateString ? (dateString.getFullYear() +
       '-' + (((dateString.getMonth()) < 9) ?
         ('0' + (dateString.getMonth() + 1)) : (dateString.getMonth() + 1)) +
-      '-' + ((dateString.getDate() < 9) ?
+      '-' + ((dateString.getDate() < 10) ?
         ('0' + dateString.getDate()) : dateString.getDate())) : undefined;
   }
 
