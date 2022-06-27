@@ -1,6 +1,6 @@
 {
-  "name": "betca-tpv-angular",
-  "version": "4.2.0-SNAPSHOT",
+  "name": "fsa-angular",
+  "version": "1.0.0-RELEASE",
   "scripts": {
     "heroku-postbuild": "ng build --prod",
     "build-prod": "ng build --prod",
